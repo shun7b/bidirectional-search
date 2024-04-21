@@ -1,0 +1,7 @@
+#include "macro.inc"
+#include"mul_bit.inc"
+module mul_bit{
+    func mul_bit_exe{
+        return mul_bit1*mul_bit2;
+    }
+}

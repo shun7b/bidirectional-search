@@ -1,0 +1,107 @@
+#include "macro.inc"
+%i "seach.inc"
+%i "seach_block.inc"
+module seach{
+    seach_block seach_blockx[196];
+    reg startplot_reg[BIT]=BIT'b0,goalplot_reg[BIT]=BIT'b0;
+    wire startplot_wire[BIT],goalplot_wire[BIT];
+    out_data(seach_blockx[0].data_out,seach_blockx[1].data_out,seach_blockx[2].data_out,seach_blockx[3].data_out,seach_blockx[4].data_out,seach_blockx[5].data_out,seach_blockx[6].data_out,seach_blockx[7].data_out,seach_blockx[8].data_out,seach_blockx[9].data_out,seach_blockx[10].data_out,seach_blockx[11].data_out,seach_blockx[12].data_out,seach_blockx[13].data_out,seach_blockx[14].data_out,seach_blockx[15].data_out,seach_blockx[16].data_out,seach_blockx[17].data_out,seach_blockx[18].data_out,seach_blockx[19].data_out,seach_blockx[20].data_out,seach_blockx[21].data_out,seach_blockx[22].data_out,seach_blockx[23].data_out,seach_blockx[24].data_out,seach_blockx[25].data_out,seach_blockx[26].data_out,seach_blockx[27].data_out,seach_blockx[28].data_out,seach_blockx[29].data_out,seach_blockx[30].data_out,seach_blockx[31].data_out,seach_blockx[32].data_out,seach_blockx[33].data_out,seach_blockx[34].data_out,seach_blockx[35].data_out,seach_blockx[36].data_out,seach_blockx[37].data_out,seach_blockx[38].data_out,seach_blockx[39].data_out,seach_blockx[40].data_out,seach_blockx[41].data_out,seach_blockx[42].data_out,seach_blockx[43].data_out,seach_blockx[44].data_out,seach_blockx[45].data_out,seach_blockx[46].data_out,seach_blockx[47].data_out,seach_blockx[48].data_out,seach_blockx[49].data_out,seach_blockx[50].data_out,seach_blockx[51].data_out,seach_blockx[52].data_out,seach_blockx[53].data_out,seach_blockx[54].data_out,seach_blockx[55].data_out,seach_blockx[56].data_out,seach_blockx[57].data_out,seach_blockx[58].data_out,seach_blockx[59].data_out,seach_blockx[60].data_out,seach_blockx[61].data_out,seach_blockx[62].data_out,seach_blockx[63].data_out,seach_blockx[64].data_out,seach_blockx[65].data_out,seach_blockx[66].data_out,seach_blockx[67].data_out,seach_blockx[68].data_out,seach_blockx[69].data_out,seach_blockx[70].data_out,seach_blockx[71].data_out,seach_blockx[72].data_out,seach_blockx[73].data_out,seach_blockx[74].data_out,seach_blockx[75].data_out,seach_blockx[76].data_out,seach_blockx[77].data_out,seach_blockx[78].data_out,seach_blockx[79].data_out,seach_blockx[80].data_out,seach_blockx[81].data_out,seach_blockx[82].data_out,seach_blockx[83].data_out,startplot_reg,goalplot_reg);
+          
+      
+    func in_do{
+        seq{
+            {
+                   seach_blockx[0].in_do(data_in17,BIT'd17);
+                    seach_blockx[1].in_do(data_in18,BIT'd18);
+                    seach_blockx[2].in_do(data_in19,BIT'd19);
+                    seach_blockx[3].in_do(data_in20,BIT'd20);
+                    seach_blockx[4].in_do(data_in21,BIT'd21);
+                    seach_blockx[5].in_do(data_in22,BIT'd22);
+                    seach_blockx[6].in_do(data_in23,BIT'd23);
+                    seach_blockx[7].in_do(data_in24,BIT'd24);
+                    seach_blockx[8].in_do(data_in25,BIT'd25);
+                    seach_blockx[9].in_do(data_in26,BIT'd26);
+                    seach_blockx[10].in_do(data_in27,BIT'd27);
+                    seach_blockx[11].in_do(data_in28,BIT'd28);
+                    seach_blockx[12].in_do(data_in29,BIT'd29);
+                    seach_blockx[13].in_do(data_in30,BIT'd30);
+                    seach_blockx[14].in_do(data_in33,BIT'd33);
+                    seach_blockx[15].in_do(data_in34,BIT'd34);
+                    seach_blockx[16].in_do(data_in35,BIT'd35);
+                    seach_blockx[17].in_do(data_in36,BIT'd36);
+                    seach_blockx[18].in_do(data_in37,BIT'd37);
+                    seach_blockx[19].in_do(data_in38,BIT'd38);
+                    seach_blockx[20].in_do(data_in39,BIT'd39);
+                    seach_blockx[21].in_do(data_in40,BIT'd40);
+                    seach_blockx[22].in_do(data_in41,BIT'd41);
+                    seach_blockx[23].in_do(data_in42,BIT'd42);
+                    seach_blockx[24].in_do(data_in43,BIT'd43);
+                    seach_blockx[25].in_do(data_in44,BIT'd44);
+                    seach_blockx[26].in_do(data_in45,BIT'd45);
+                    seach_blockx[27].in_do(data_in46,BIT'd46);
+                    seach_blockx[28].in_do(data_in49,BIT'd49);
+                    seach_blockx[29].in_do(data_in50,BIT'd50);
+                    seach_blockx[30].in_do(data_in51,BIT'd51);
+                    seach_blockx[31].in_do(data_in52,BIT'd52);
+                    seach_blockx[32].in_do(data_in53,BIT'd53);
+                    seach_blockx[33].in_do(data_in54,BIT'd54);
+                    seach_blockx[34].in_do(data_in55,BIT'd55);
+                    seach_blockx[35].in_do(data_in56,BIT'd56);
+                    seach_blockx[36].in_do(data_in57,BIT'd57);
+                    seach_blockx[37].in_do(data_in58,BIT'd58);
+                    seach_blockx[38].in_do(data_in59,BIT'd59);
+                    seach_blockx[39].in_do(data_in60,BIT'd60);
+                    seach_blockx[40].in_do(data_in61,BIT'd61);
+                    seach_blockx[41].in_do(data_in62,BIT'd62);
+                    seach_blockx[42].in_do(data_in65,BIT'd65);
+                    seach_blockx[43].in_do(data_in66,BIT'd66);
+                    seach_blockx[44].in_do(data_in67,BIT'd67);
+                    seach_blockx[45].in_do(data_in68,BIT'd68);
+                    seach_blockx[46].in_do(data_in69,BIT'd69);
+                    seach_blockx[47].in_do(data_in70,BIT'd70);
+                    seach_blockx[48].in_do(data_in71,BIT'd71);
+                    seach_blockx[49].in_do(data_in72,BIT'd72);
+                    seach_blockx[50].in_do(data_in73,BIT'd73);
+                    seach_blockx[51].in_do(data_in74,BIT'd74);
+                    seach_blockx[52].in_do(data_in75,BIT'd75);
+                    seach_blockx[53].in_do(data_in76,BIT'd76);
+                    seach_blockx[54].in_do(data_in77,BIT'd77);
+                    seach_blockx[55].in_do(data_in78,BIT'd78);
+                    seach_blockx[56].in_do(data_in81,BIT'd81);
+                    seach_blockx[57].in_do(data_in82,BIT'd82);
+                    seach_blockx[58].in_do(data_in83,BIT'd83);
+                    seach_blockx[59].in_do(data_in84,BIT'd84);
+                    seach_blockx[60].in_do(data_in85,BIT'd85);
+                    seach_blockx[61].in_do(data_in86,BIT'd86);
+                    seach_blockx[62].in_do(data_in87,BIT'd87);
+                    seach_blockx[63].in_do(data_in88,BIT'd88);
+                    seach_blockx[64].in_do(data_in89,BIT'd89);
+                    seach_blockx[65].in_do(data_in90,BIT'd90);
+                    seach_blockx[66].in_do(data_in91,BIT'd91);
+                    seach_blockx[67].in_do(data_in92,BIT'd92);
+                    seach_blockx[68].in_do(data_in93,BIT'd93);
+                    seach_blockx[69].in_do(data_in94,BIT'd94);
+                    seach_blockx[70].in_do(data_in97,BIT'd97);
+                    seach_blockx[71].in_do(data_in98,BIT'd98);
+                    seach_blockx[72].in_do(data_in99,BIT'd99);
+                    seach_blockx[73].in_do(data_in100,BIT'd100);
+                    seach_blockx[74].in_do(data_in101,BIT'd101);
+                    seach_blockx[75].in_do(data_in102,BIT'd102);
+                    seach_blockx[76].in_do(data_in103,BIT'd103);
+                    seach_blockx[77].in_do(data_in104,BIT'd104);
+                    seach_blockx[78].in_do(data_in105,BIT'd105);
+                    seach_blockx[79].in_do(data_in106,BIT'd106);
+                    seach_blockx[80].in_do(data_in107,BIT'd107);
+                    seach_blockx[81].in_do(data_in108,BIT'd108);
+                    seach_blockx[82].in_do(data_in109,BIT'd109);
+                    seach_blockx[83].in_do(data_in110,BIT'd110);
+
+
+              startplot_reg:=(seach_blockx[0].start|seach_blockx[1].start|seach_blockx[2].start|seach_blockx[3].start|seach_blockx[4].start|seach_blockx[5].start|seach_blockx[6].start|seach_blockx[7].start|seach_blockx[8].start|seach_blockx[9].start|seach_blockx[10].start|seach_blockx[11].start|seach_blockx[12].start|seach_blockx[13].start|seach_blockx[14].start|seach_blockx[15].start|seach_blockx[16].start|seach_blockx[17].start|seach_blockx[18].start|seach_blockx[19].start|seach_blockx[20].start|seach_blockx[21].start|seach_blockx[22].start|seach_blockx[23].start|seach_blockx[24].start|seach_blockx[25].start|seach_blockx[26].start|seach_blockx[27].start|seach_blockx[28].start|seach_blockx[29].start|seach_blockx[30].start|seach_blockx[31].start|seach_blockx[32].start|seach_blockx[33].start|seach_blockx[34].start|seach_blockx[35].start|seach_blockx[36].start|seach_blockx[37].start|seach_blockx[38].start|seach_blockx[39].start|seach_blockx[40].start|seach_blockx[41].start|seach_blockx[42].start|seach_blockx[43].start|seach_blockx[44].start|seach_blockx[45].start|seach_blockx[46].start|seach_blockx[47].start|seach_blockx[48].start|seach_blockx[49].start|seach_blockx[50].start|seach_blockx[51].start|seach_blockx[52].start|seach_blockx[53].start|seach_blockx[54].start|seach_blockx[55].start|seach_blockx[56].start|seach_blockx[57].start|seach_blockx[58].start|seach_blockx[59].start|seach_blockx[60].start|seach_blockx[61].start|seach_blockx[62].start|seach_blockx[63].start|seach_blockx[64].start|seach_blockx[65].start|seach_blockx[66].start|seach_blockx[67].start|seach_blockx[68].start|seach_blockx[69].start|seach_blockx[70].start|seach_blockx[71].start|seach_blockx[72].start|seach_blockx[73].start|seach_blockx[74].start|seach_blockx[75].start|seach_blockx[76].start|seach_blockx[77].start|seach_blockx[78].start|seach_blockx[79].start|seach_blockx[80].start|seach_blockx[81].start|seach_blockx[82].start|seach_blockx[83].start);
+              goalplot_reg:=(seach_blockx[0].goal|seach_blockx[1].goal|seach_blockx[2].goal|seach_blockx[3].goal|seach_blockx[4].goal|seach_blockx[5].goal|seach_blockx[6].goal|seach_blockx[7].goal|seach_blockx[8].goal|seach_blockx[9].goal|seach_blockx[10].goal|seach_blockx[11].goal|seach_blockx[12].goal|seach_blockx[13].goal|seach_blockx[14].goal|seach_blockx[15].goal|seach_blockx[16].goal|seach_blockx[17].goal|seach_blockx[18].goal|seach_blockx[19].goal|seach_blockx[20].goal|seach_blockx[21].goal|seach_blockx[22].goal|seach_blockx[23].goal|seach_blockx[24].goal|seach_blockx[25].goal|seach_blockx[26].goal|seach_blockx[27].goal|seach_blockx[28].goal|seach_blockx[29].goal|seach_blockx[30].goal|seach_blockx[31].goal|seach_blockx[32].goal|seach_blockx[33].goal|seach_blockx[34].goal|seach_blockx[35].goal|seach_blockx[36].goal|seach_blockx[37].goal|seach_blockx[38].goal|seach_blockx[39].goal|seach_blockx[40].goal|seach_blockx[41].goal|seach_blockx[42].goal|seach_blockx[43].goal|seach_blockx[44].goal|seach_blockx[45].goal|seach_blockx[46].goal|seach_blockx[47].goal|seach_blockx[48].goal|seach_blockx[49].goal|seach_blockx[50].goal|seach_blockx[51].goal|seach_blockx[52].goal|seach_blockx[53].goal|seach_blockx[54].goal|seach_blockx[55].goal|seach_blockx[56].goal|seach_blockx[57].goal|seach_blockx[58].goal|seach_blockx[59].goal|seach_blockx[60].goal|seach_blockx[61].goal|seach_blockx[62].goal|seach_blockx[63].goal|seach_blockx[64].goal|seach_blockx[65].goal|seach_blockx[66].goal|seach_blockx[67].goal|seach_blockx[68].goal|seach_blockx[69].goal|seach_blockx[70].goal|seach_blockx[71].goal|seach_blockx[72].goal|seach_blockx[73].goal|seach_blockx[74].goal|seach_blockx[75].goal|seach_blockx[76].goal|seach_blockx[77].goal|seach_blockx[78].goal|seach_blockx[79].goal|seach_blockx[80].goal|seach_blockx[81].goal|seach_blockx[82].goal|seach_blockx[83].goal );
+         }
+
+        out_do();
+      }          
+    }
+}

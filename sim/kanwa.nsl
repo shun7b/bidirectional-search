@@ -1,0 +1,270 @@
+#include "macro.inc"
+#include "kanwa.inc"
+#include"add_all.inc"
+#include "subs.inc"
+#include "add_map.inc"
+module kanwa{
+      
+    
+    add_all add_all_x;
+    subs sub_x;
+    reg kanwa_exit[3]=3'b0;
+		reg distance_count[BIT]=BIT'b0;
+    wire dig_exit;
+    label_name kanwa_label;
+    reg start_reg[BIT]=BIT'b0;
+    reg goal_reg[BIT]=BIT'b0;
+    reg even=1'b0;
+        wire even_w1,start_w[BIT],goal_w[BIT],wall_w;
+    wire data_wire17[BIT],data_wire18[BIT],data_wire19[BIT],data_wire20[BIT],data_wire21[BIT],data_wire22[BIT],data_wire23[BIT],data_wire24[BIT],data_wire25[BIT],data_wire26[BIT],data_wire27[BIT],data_wire28[BIT],data_wire29[BIT],data_wire30[BIT],
+        data_wire33[BIT],data_wire34[BIT],data_wire35[BIT],data_wire36[BIT],data_wire37[BIT],data_wire38[BIT],data_wire39[BIT],data_wire40[BIT],data_wire41[BIT],data_wire42[BIT],data_wire43[BIT],data_wire44[BIT],data_wire45[BIT],data_wire46[BIT],
+        data_wire49[BIT],data_wire50[BIT],data_wire51[BIT],data_wire52[BIT],data_wire53[BIT],data_wire54[BIT],data_wire55[BIT],data_wire56[BIT],data_wire57[BIT],data_wire58[BIT],data_wire59[BIT],data_wire60[BIT],data_wire61[BIT],data_wire62[BIT],
+        data_wire65[BIT],data_wire66[BIT],data_wire67[BIT],data_wire68[BIT],data_wire69[BIT],data_wire70[BIT],data_wire71[BIT],data_wire72[BIT],data_wire73[BIT],data_wire74[BIT],data_wire75[BIT],data_wire76[BIT],data_wire77[BIT],data_wire78[BIT],
+        data_wire81[BIT],data_wire82[BIT],data_wire83[BIT],data_wire84[BIT],data_wire85[BIT],data_wire86[BIT],data_wire87[BIT],data_wire88[BIT],data_wire89[BIT],data_wire90[BIT],data_wire91[BIT],data_wire92[BIT],data_wire93[BIT],data_wire94[BIT],
+        data_wire97[BIT],data_wire98[BIT],data_wire99[BIT],data_wire100[BIT],data_wire101[BIT],data_wire102[BIT],data_wire103[BIT],data_wire104[BIT],data_wire105[BIT],data_wire106[BIT],data_wire107[BIT],data_wire108[BIT],data_wire109[BIT],data_wire110[BIT],
+  org17[BIT],org18[BIT],org19[BIT],org20[BIT],org21[BIT],org22[BIT],org23[BIT],org24[BIT],org25[BIT],org26[BIT],org27[BIT],org28[BIT],org29[BIT],org30[BIT],
+org33[BIT],org34[BIT],org35[BIT],org36[BIT],org37[BIT],org38[BIT],org39[BIT],org40[BIT],org41[BIT],org42[BIT],org43[BIT],org44[BIT],org45[BIT],org46[BIT],
+org49[BIT],org50[BIT],org51[BIT],org52[BIT],org53[BIT],org54[BIT],org55[BIT],org56[BIT],org57[BIT],org58[BIT],org59[BIT],org60[BIT],org61[BIT],org62[BIT],
+org65[BIT],org66[BIT],org67[BIT],org68[BIT],org69[BIT],org70[BIT],org71[BIT],org72[BIT],org73[BIT],org74[BIT],org75[BIT],org76[BIT],org77[BIT],org78[BIT],
+org81[BIT],org82[BIT],org83[BIT],org84[BIT],org85[BIT],org86[BIT],org87[BIT],org88[BIT],org89[BIT],org90[BIT],org91[BIT],org92[BIT],org93[BIT],org94[BIT],
+org97[BIT],org98[BIT],org99[BIT],org100[BIT],org101[BIT],org102[BIT],org103[BIT],org104[BIT],org105[BIT],org106[BIT],org107[BIT],org108[BIT],org109[BIT],org110[BIT],
+sg17[2],sg18[2],sg19[2],sg20[2],sg21[2],sg22[2],sg23[2],sg24[2],sg25[2],sg26[2],sg27[2],sg28[2],sg29[2],sg30[2],
+sg33[2],sg34[2],sg35[2],sg36[2],sg37[2],sg38[2],sg39[2],sg40[2],sg41[2],sg42[2],sg43[2],sg44[2],sg45[2],sg46[2],
+sg49[2],sg50[2],sg51[2],sg52[2],sg53[2],sg54[2],sg55[2],sg56[2],sg57[2],sg58[2],sg59[2],sg60[2],sg61[2],sg62[2],
+sg65[2],sg66[2],sg67[2],sg68[2],sg69[2],sg70[2],sg71[2],sg72[2],sg73[2],sg74[2],sg75[2],sg76[2],sg77[2],sg78[2],
+sg81[2],sg82[2],sg83[2],sg84[2],sg85[2],sg86[2],sg87[2],sg88[2],sg89[2],sg90[2],sg91[2],sg92[2],sg93[2],sg94[2],
+sg97[2],sg98[2],sg99[2],sg100[2],sg101[2],sg102[2],sg103[2],sg104[2],sg105[2],sg106[2],sg107[2],sg108[2],sg109[2],sg110[2];
+wire wall_end_wire[MAP_SIZE];
+wire distance_wire[BIT];
+wire all_s_g17[MAP_SIZE],all_s_g18[MAP_SIZE],all_s_g19[MAP_SIZE],all_s_g20[MAP_SIZE],all_s_g21[MAP_SIZE],all_s_g22[MAP_SIZE],all_s_g23[MAP_SIZE],all_s_g24[MAP_SIZE],all_s_g25[MAP_SIZE],all_s_g26[MAP_SIZE],all_s_g27[MAP_SIZE],all_s_g28[MAP_SIZE],all_s_g29[MAP_SIZE],all_s_g30[MAP_SIZE],
+all_s_g33[MAP_SIZE],all_s_g34[MAP_SIZE],all_s_g35[MAP_SIZE],all_s_g36[MAP_SIZE],all_s_g37[MAP_SIZE],all_s_g38[MAP_SIZE],all_s_g39[MAP_SIZE],all_s_g40[MAP_SIZE],all_s_g41[MAP_SIZE],all_s_g42[MAP_SIZE],all_s_g43[MAP_SIZE],all_s_g44[MAP_SIZE],all_s_g45[MAP_SIZE],all_s_g46[MAP_SIZE],
+all_s_g49[MAP_SIZE],all_s_g50[MAP_SIZE],all_s_g51[MAP_SIZE],all_s_g52[MAP_SIZE],all_s_g53[MAP_SIZE],all_s_g54[MAP_SIZE],all_s_g55[MAP_SIZE],all_s_g56[MAP_SIZE],all_s_g57[MAP_SIZE],all_s_g58[MAP_SIZE],all_s_g59[MAP_SIZE],all_s_g60[MAP_SIZE],all_s_g61[MAP_SIZE],all_s_g62[MAP_SIZE],
+all_s_g65[MAP_SIZE],all_s_g66[MAP_SIZE],all_s_g67[MAP_SIZE],all_s_g68[MAP_SIZE],all_s_g69[MAP_SIZE],all_s_g70[MAP_SIZE],all_s_g71[MAP_SIZE],all_s_g72[MAP_SIZE],all_s_g73[MAP_SIZE],all_s_g74[MAP_SIZE],all_s_g75[MAP_SIZE],all_s_g76[MAP_SIZE],all_s_g77[MAP_SIZE],all_s_g78[MAP_SIZE],
+all_s_g81[MAP_SIZE],all_s_g82[MAP_SIZE],all_s_g83[MAP_SIZE],all_s_g84[MAP_SIZE],all_s_g85[MAP_SIZE],all_s_g86[MAP_SIZE],all_s_g87[MAP_SIZE],all_s_g88[MAP_SIZE],all_s_g89[MAP_SIZE],all_s_g90[MAP_SIZE],all_s_g91[MAP_SIZE],all_s_g92[MAP_SIZE],all_s_g93[MAP_SIZE],all_s_g94[MAP_SIZE],
+all_s_g97[MAP_SIZE],all_s_g98[MAP_SIZE],all_s_g99[MAP_SIZE],all_s_g100[MAP_SIZE],all_s_g101[MAP_SIZE],all_s_g102[MAP_SIZE],all_s_g103[MAP_SIZE],all_s_g104[MAP_SIZE],all_s_g105[MAP_SIZE],all_s_g106[MAP_SIZE],all_s_g107[MAP_SIZE],all_s_g108[MAP_SIZE],all_s_g109[MAP_SIZE],all_s_g110[MAP_SIZE];
+    func_self kanwa_s(data_wire17,data_wire18,data_wire19,data_wire20,data_wire21,data_wire22,data_wire23,data_wire24,data_wire25,data_wire26,data_wire27,data_wire28,data_wire29,data_wire30,
+                data_wire33,data_wire34,data_wire35,data_wire36,data_wire37,data_wire38,data_wire39,data_wire40,data_wire41,data_wire42,data_wire43,data_wire44,data_wire45,data_wire46,
+                data_wire49,data_wire50,data_wire51,data_wire52,data_wire53,data_wire54,data_wire55,data_wire56,data_wire57,data_wire58,data_wire59,data_wire60,data_wire61,data_wire62,
+                data_wire65,data_wire66,data_wire67,data_wire68,data_wire69,data_wire70,data_wire71,data_wire72,data_wire73,data_wire74,data_wire75,data_wire76,data_wire77,data_wire78,
+                data_wire81,data_wire82,data_wire83,data_wire84,data_wire85,data_wire86,data_wire87,data_wire88,data_wire89,data_wire90,data_wire91,data_wire92,data_wire93,data_wire94,
+                data_wire97,data_wire98,data_wire99,data_wire100,data_wire101,data_wire102,data_wire103,data_wire104,data_wire105,data_wire106,data_wire107,data_wire108,data_wire109,data_wire110,
+org17,org18,org19,org20,org21,org22,org23,org24,org25,org26,org27,org28,org29,org30,
+org33,org34,org35,org36,org37,org38,org39,org40,org41,org42,org43,org44,org45,org46,
+org49,org50,org51,org52,org53,org54,org55,org56,org57,org58,org59,org60,org61,org62,
+org65,org66,org67,org68,org69,org70,org71,org72,org73,org74,org75,org76,org77,org78,
+org81,org82,org83,org84,org85,org86,org87,org88,org89,org90,org91,org92,org93,org94,
+org97,org98,org99,org100,org101,org102,org103,org104,org105,org106,org107,org108,org109,org110,
+sg17,sg18,sg19,sg20,sg21,sg22,sg23,sg24,sg25,sg26,sg27,sg28,sg29,sg30,
+sg33,sg34,sg35,sg36,sg37,sg38,sg39,sg40,sg41,sg42,sg43,sg44,sg45,sg46,
+sg49,sg50,sg51,sg52,sg53,sg54,sg55,sg56,sg57,sg58,sg59,sg60,sg61,sg62,
+sg65,sg66,sg67,sg68,sg69,sg70,sg71,sg72,sg73,sg74,sg75,sg76,sg77,sg78,
+sg81,sg82,sg83,sg84,sg85,sg86,sg87,sg88,sg89,sg90,sg91,sg92,sg93,sg94,
+sg97,sg98,sg99,sg100,sg101,sg102,sg103,sg104,sg105,sg106,sg107,sg108,sg109,sg110,
+all_s_g17,all_s_g18,all_s_g19,all_s_g20,all_s_g21,all_s_g22,all_s_g23,all_s_g24,all_s_g25,all_s_g26,all_s_g27,all_s_g28,all_s_g29,all_s_g30,
+all_s_g33,all_s_g34,all_s_g35,all_s_g36,all_s_g37,all_s_g38,all_s_g39,all_s_g40,all_s_g41,all_s_g42,all_s_g43,all_s_g44,all_s_g45,all_s_g46,
+all_s_g49,all_s_g50,all_s_g51,all_s_g52,all_s_g53,all_s_g54,all_s_g55,all_s_g56,all_s_g57,all_s_g58,all_s_g59,all_s_g60,all_s_g61,all_s_g62,
+all_s_g65,all_s_g66,all_s_g67,all_s_g68,all_s_g69,all_s_g70,all_s_g71,all_s_g72,all_s_g73,all_s_g74,all_s_g75,all_s_g76,all_s_g77,all_s_g78,
+all_s_g81,all_s_g82,all_s_g83,all_s_g84,all_s_g85,all_s_g86,all_s_g87,all_s_g88,all_s_g89,all_s_g90,all_s_g91,all_s_g92,all_s_g93,all_s_g94,
+all_s_g97,all_s_g98,all_s_g99,all_s_g100,all_s_g101,all_s_g102,all_s_g103,all_s_g104,all_s_g105,all_s_g106,all_s_g107,all_s_g108,all_s_g109,all_s_g110,
+    even_w1,start_w,goal_w,wall_w,distance_wire,wall_end_wire);
+
+    func add_all_x.out_data{};
+	dig_exit=add_all_x.dig_t0|add_all_x.dig_t1|add_all_x.dig_t2|add_all_x.dig_t3|add_all_x.dig_t4|add_all_x.dig_t5|add_all_x.dig_t6|add_all_x.dig_t7|add_all_x.dig_t8|add_all_x.dig_t9|add_all_x.dig_t10|add_all_x.dig_t11|add_all_x.dig_t12|add_all_x.dig_t13|add_all_x.dig_t14|add_all_x.dig_t15|add_all_x.dig_t16|add_all_x.dig_t17|add_all_x.dig_t18|add_all_x.dig_t19|add_all_x.dig_t20|add_all_x.dig_t21|add_all_x.dig_t22|add_all_x.dig_t23|add_all_x.dig_t24|add_all_x.dig_t25|add_all_x.dig_t26|add_all_x.dig_t27|add_all_x.dig_t28|add_all_x.dig_t29|add_all_x.dig_t30|add_all_x.dig_t31|add_all_x.dig_t32|add_all_x.dig_t33|add_all_x.dig_t34|add_all_x.dig_t35|add_all_x.dig_t36|add_all_x.dig_t37|add_all_x.dig_t38|add_all_x.dig_t39|add_all_x.dig_t40|add_all_x.dig_t41;
+
+    func in_do{
+
+        seq{
+            {
+						distance_count:=2;
+            kanwa_s(
+		
+BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),
+BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),
+BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),
+BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),
+BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),
+BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),BIT#(1'b1),
+	  data_in17,data_in18,data_in19,data_in20,data_in21,data_in22,data_in23,data_in24,data_in25,data_in26,data_in27,data_in28,data_in29,data_in30,
+            data_in33,data_in34,data_in35,data_in36,data_in37,data_in38,data_in39,data_in40,data_in41,data_in42,data_in43,data_in44,data_in45,data_in46,
+            data_in49,data_in50,data_in51,data_in52,data_in53,data_in54,data_in55,data_in56,data_in57,data_in58,data_in59,data_in60,data_in61,data_in62,
+            data_in65,data_in66,data_in67,data_in68,data_in69,data_in70,data_in71,data_in72,data_in73,data_in74,data_in75,data_in76,data_in77,data_in78,
+            data_in81,data_in82,data_in83,data_in84,data_in85,data_in86,data_in87,data_in88,data_in89,data_in90,data_in91,data_in92,data_in93,data_in94,
+            data_in97,data_in98,data_in99,data_in100,data_in101,data_in102,data_in103,data_in104,data_in105,data_in106,data_in107,data_in108,data_in109,data_in110,
+2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,
+2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,
+2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,
+2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,
+2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,
+2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,2'b0,
+MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
+MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
+MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
+MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
+MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
+MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
+                0b1,start,goal,0b0,BIT'(0b1),MAP_SIZE'b0);
+            start_reg:=start;
+            goal_reg:=goal;
+            }
+            kanwa_label:
+{
+                _display("exit %b,dig_exit%b",kanwa_exit,dig_exit);
+            kanwa_s(add_all_x.data_out17,add_all_x.data_out18,add_all_x.data_out19,add_all_x.data_out20,add_all_x.data_out21,add_all_x.data_out22,add_all_x.data_out23,add_all_x.data_out24,add_all_x.data_out25,add_all_x.data_out26,add_all_x.data_out27,add_all_x.data_out28,add_all_x.data_out29,add_all_x.data_out30,
+            add_all_x.data_out33,add_all_x.data_out34,add_all_x.data_out35,add_all_x.data_out36,add_all_x.data_out37,add_all_x.data_out38,add_all_x.data_out39,add_all_x.data_out40,add_all_x.data_out41,add_all_x.data_out42,add_all_x.data_out43,add_all_x.data_out44,add_all_x.data_out45,add_all_x.data_out46,
+            add_all_x.data_out49,add_all_x.data_out50,add_all_x.data_out51,add_all_x.data_out52,add_all_x.data_out53,add_all_x.data_out54,add_all_x.data_out55,add_all_x.data_out56,add_all_x.data_out57,add_all_x.data_out58,add_all_x.data_out59,add_all_x.data_out60,add_all_x.data_out61,add_all_x.data_out62,
+            add_all_x.data_out65,add_all_x.data_out66,add_all_x.data_out67,add_all_x.data_out68,add_all_x.data_out69,add_all_x.data_out70,add_all_x.data_out71,add_all_x.data_out72,add_all_x.data_out73,add_all_x.data_out74,add_all_x.data_out75,add_all_x.data_out76,add_all_x.data_out77,add_all_x.data_out78,
+            add_all_x.data_out81,add_all_x.data_out82,add_all_x.data_out83,add_all_x.data_out84,add_all_x.data_out85,add_all_x.data_out86,add_all_x.data_out87,add_all_x.data_out88,add_all_x.data_out89,add_all_x.data_out90,add_all_x.data_out91,add_all_x.data_out92,add_all_x.data_out93,add_all_x.data_out94,
+            add_all_x.data_out97,add_all_x.data_out98,add_all_x.data_out99,add_all_x.data_out100,add_all_x.data_out101,add_all_x.data_out102,add_all_x.data_out103,add_all_x.data_out104,add_all_x.data_out105,add_all_x.data_out106,add_all_x.data_out107,add_all_x.data_out108,add_all_x.data_out109,add_all_x.data_out110,
+add_all_x.data_out_org17,add_all_x.data_out_org18,add_all_x.data_out_org19,add_all_x.data_out_org20,add_all_x.data_out_org21,add_all_x.data_out_org22,add_all_x.data_out_org23,add_all_x.data_out_org24,add_all_x.data_out_org25,add_all_x.data_out_org26,add_all_x.data_out_org27,add_all_x.data_out_org28,add_all_x.data_out_org29,add_all_x.data_out_org30,
+            add_all_x.data_out_org33,add_all_x.data_out_org34,add_all_x.data_out_org35,add_all_x.data_out_org36,add_all_x.data_out_org37,add_all_x.data_out_org38,add_all_x.data_out_org39,add_all_x.data_out_org40,add_all_x.data_out_org41,add_all_x.data_out_org42,add_all_x.data_out_org43,add_all_x.data_out_org44,add_all_x.data_out_org45,add_all_x.data_out_org46,
+            add_all_x.data_out_org49,add_all_x.data_out_org50,add_all_x.data_out_org51,add_all_x.data_out_org52,add_all_x.data_out_org53,add_all_x.data_out_org54,add_all_x.data_out_org55,add_all_x.data_out_org56,add_all_x.data_out_org57,add_all_x.data_out_org58,add_all_x.data_out_org59,add_all_x.data_out_org60,add_all_x.data_out_org61,add_all_x.data_out_org62,
+            add_all_x.data_out_org65,add_all_x.data_out_org66,add_all_x.data_out_org67,add_all_x.data_out_org68,add_all_x.data_out_org69,add_all_x.data_out_org70,add_all_x.data_out_org71,add_all_x.data_out_org72,add_all_x.data_out_org73,add_all_x.data_out_org74,add_all_x.data_out_org75,add_all_x.data_out_org76,add_all_x.data_out_org77,add_all_x.data_out_org78,
+            add_all_x.data_out_org81,add_all_x.data_out_org82,add_all_x.data_out_org83,add_all_x.data_out_org84,add_all_x.data_out_org85,add_all_x.data_out_org86,add_all_x.data_out_org87,add_all_x.data_out_org88,add_all_x.data_out_org89,add_all_x.data_out_org90,add_all_x.data_out_org91,add_all_x.data_out_org92,add_all_x.data_out_org93,add_all_x.data_out_org94,
+            add_all_x.data_out_org97,add_all_x.data_out_org98,add_all_x.data_out_org99,add_all_x.data_out_org100,add_all_x.data_out_org101,add_all_x.data_out_org102,add_all_x.data_out_org103,add_all_x.data_out_org104,add_all_x.data_out_org105,add_all_x.data_out_org106,add_all_x.data_out_org107,add_all_x.data_out_org108,add_all_x.data_out_org109,add_all_x.data_out_org110,
+add_all_x.sg_out17,add_all_x.sg_out18,add_all_x.sg_out19,add_all_x.sg_out20,add_all_x.sg_out21,add_all_x.sg_out22,add_all_x.sg_out23,add_all_x.sg_out24,add_all_x.sg_out25,add_all_x.sg_out26,add_all_x.sg_out27,add_all_x.sg_out28,add_all_x.sg_out29,add_all_x.sg_out30,
+            add_all_x.sg_out33,add_all_x.sg_out34,add_all_x.sg_out35,add_all_x.sg_out36,add_all_x.sg_out37,add_all_x.sg_out38,add_all_x.sg_out39,add_all_x.sg_out40,add_all_x.sg_out41,add_all_x.sg_out42,add_all_x.sg_out43,add_all_x.sg_out44,add_all_x.sg_out45,add_all_x.sg_out46,
+            add_all_x.sg_out49,add_all_x.sg_out50,add_all_x.sg_out51,add_all_x.sg_out52,add_all_x.sg_out53,add_all_x.sg_out54,add_all_x.sg_out55,add_all_x.sg_out56,add_all_x.sg_out57,add_all_x.sg_out58,add_all_x.sg_out59,add_all_x.sg_out60,add_all_x.sg_out61,add_all_x.sg_out62,
+            add_all_x.sg_out65,add_all_x.sg_out66,add_all_x.sg_out67,add_all_x.sg_out68,add_all_x.sg_out69,add_all_x.sg_out70,add_all_x.sg_out71,add_all_x.sg_out72,add_all_x.sg_out73,add_all_x.sg_out74,add_all_x.sg_out75,add_all_x.sg_out76,add_all_x.sg_out77,add_all_x.sg_out78,
+            add_all_x.sg_out81,add_all_x.sg_out82,add_all_x.sg_out83,add_all_x.sg_out84,add_all_x.sg_out85,add_all_x.sg_out86,add_all_x.sg_out87,add_all_x.sg_out88,add_all_x.sg_out89,add_all_x.sg_out90,add_all_x.sg_out91,add_all_x.sg_out92,add_all_x.sg_out93,add_all_x.sg_out94,
+            add_all_x.sg_out97,add_all_x.sg_out98,add_all_x.sg_out99,add_all_x.sg_out100,add_all_x.sg_out101,add_all_x.sg_out102,add_all_x.sg_out103,add_all_x.sg_out104,add_all_x.sg_out105,add_all_x.sg_out106,add_all_x.sg_out107,add_all_x.sg_out108,add_all_x.sg_out109,add_all_x.sg_out110,
+
+add_all_x.all_sg_out17,add_all_x.all_sg_out18,add_all_x.all_sg_out19,add_all_x.all_sg_out20,add_all_x.all_sg_out21,add_all_x.all_sg_out22,add_all_x.all_sg_out23,add_all_x.all_sg_out24,add_all_x.all_sg_out25,add_all_x.all_sg_out26,add_all_x.all_sg_out27,add_all_x.all_sg_out28,add_all_x.all_sg_out29,add_all_x.all_sg_out30,
+            add_all_x.all_sg_out33,add_all_x.all_sg_out34,add_all_x.all_sg_out35,add_all_x.all_sg_out36,add_all_x.all_sg_out37,add_all_x.all_sg_out38,add_all_x.all_sg_out39,add_all_x.all_sg_out40,add_all_x.all_sg_out41,add_all_x.all_sg_out42,add_all_x.all_sg_out43,add_all_x.all_sg_out44,add_all_x.all_sg_out45,add_all_x.all_sg_out46,
+            add_all_x.all_sg_out49,add_all_x.all_sg_out50,add_all_x.all_sg_out51,add_all_x.all_sg_out52,add_all_x.all_sg_out53,add_all_x.all_sg_out54,add_all_x.all_sg_out55,add_all_x.all_sg_out56,add_all_x.all_sg_out57,add_all_x.all_sg_out58,add_all_x.all_sg_out59,add_all_x.all_sg_out60,add_all_x.all_sg_out61,add_all_x.all_sg_out62,
+            add_all_x.all_sg_out65,add_all_x.all_sg_out66,add_all_x.all_sg_out67,add_all_x.all_sg_out68,add_all_x.all_sg_out69,add_all_x.all_sg_out70,add_all_x.all_sg_out71,add_all_x.all_sg_out72,add_all_x.all_sg_out73,add_all_x.all_sg_out74,add_all_x.all_sg_out75,add_all_x.all_sg_out76,add_all_x.all_sg_out77,add_all_x.all_sg_out78,
+            add_all_x.all_sg_out81,add_all_x.all_sg_out82,add_all_x.all_sg_out83,add_all_x.all_sg_out84,add_all_x.all_sg_out85,add_all_x.all_sg_out86,add_all_x.all_sg_out87,add_all_x.all_sg_out88,add_all_x.all_sg_out89,add_all_x.all_sg_out90,add_all_x.all_sg_out91,add_all_x.all_sg_out92,add_all_x.all_sg_out93,add_all_x.all_sg_out94,
+            add_all_x.all_sg_out97,add_all_x.all_sg_out98,add_all_x.all_sg_out99,add_all_x.all_sg_out100,add_all_x.all_sg_out101,add_all_x.all_sg_out102,add_all_x.all_sg_out103,add_all_x.all_sg_out104,add_all_x.all_sg_out105,add_all_x.all_sg_out106,add_all_x.all_sg_out107,add_all_x.all_sg_out108,add_all_x.all_sg_out109,add_all_x.all_sg_out110,
+                0b0,start_reg,goal_reg,dig_exit,distance_count,add_all_x.wall_end); 
+								
+				distance_count++;
+	}	
+            if((kanwa_exit<0b011||dig_exit==1'b0)&&start_reg!=goal_reg-1&&start_reg!=goal_reg+1&&start_reg!=goal_reg-WIDTH&&start_reg!=goal_reg+WIDTH){
+                kanwa_s(add_all_x.data_out17,add_all_x.data_out18,add_all_x.data_out19,add_all_x.data_out20,add_all_x.data_out21,add_all_x.data_out22,add_all_x.data_out23,add_all_x.data_out24,add_all_x.data_out25,add_all_x.data_out26,add_all_x.data_out27,add_all_x.data_out28,add_all_x.data_out29,add_all_x.data_out30,
+                add_all_x.data_out33,add_all_x.data_out34,add_all_x.data_out35,add_all_x.data_out36,add_all_x.data_out37,add_all_x.data_out38,add_all_x.data_out39,add_all_x.data_out40,add_all_x.data_out41,add_all_x.data_out42,add_all_x.data_out43,add_all_x.data_out44,add_all_x.data_out45,add_all_x.data_out46,
+                add_all_x.data_out49,add_all_x.data_out50,add_all_x.data_out51,add_all_x.data_out52,add_all_x.data_out53,add_all_x.data_out54,add_all_x.data_out55,add_all_x.data_out56,add_all_x.data_out57,add_all_x.data_out58,add_all_x.data_out59,add_all_x.data_out60,add_all_x.data_out61,add_all_x.data_out62,
+                add_all_x.data_out65,add_all_x.data_out66,add_all_x.data_out67,add_all_x.data_out68,add_all_x.data_out69,add_all_x.data_out70,add_all_x.data_out71,add_all_x.data_out72,add_all_x.data_out73,add_all_x.data_out74,add_all_x.data_out75,add_all_x.data_out76,add_all_x.data_out77,add_all_x.data_out78,
+                add_all_x.data_out81,add_all_x.data_out82,add_all_x.data_out83,add_all_x.data_out84,add_all_x.data_out85,add_all_x.data_out86,add_all_x.data_out87,add_all_x.data_out88,add_all_x.data_out89,add_all_x.data_out90,add_all_x.data_out91,add_all_x.data_out92,add_all_x.data_out93,add_all_x.data_out94,
+                add_all_x.data_out97,add_all_x.data_out98,add_all_x.data_out99,add_all_x.data_out100,add_all_x.data_out101,add_all_x.data_out102,add_all_x.data_out103,add_all_x.data_out104,add_all_x.data_out105,add_all_x.data_out106,add_all_x.data_out107,add_all_x.data_out108,add_all_x.data_out109,add_all_x.data_out110,
+add_all_x.data_out_org17,add_all_x.data_out_org18,add_all_x.data_out_org19,add_all_x.data_out_org20,add_all_x.data_out_org21,add_all_x.data_out_org22,add_all_x.data_out_org23,add_all_x.data_out_org24,add_all_x.data_out_org25,add_all_x.data_out_org26,add_all_x.data_out_org27,add_all_x.data_out_org28,add_all_x.data_out_org29,add_all_x.data_out_org30,
+            add_all_x.data_out_org33,add_all_x.data_out_org34,add_all_x.data_out_org35,add_all_x.data_out_org36,add_all_x.data_out_org37,add_all_x.data_out_org38,add_all_x.data_out_org39,add_all_x.data_out_org40,add_all_x.data_out_org41,add_all_x.data_out_org42,add_all_x.data_out_org43,add_all_x.data_out_org44,add_all_x.data_out_org45,add_all_x.data_out_org46,
+            add_all_x.data_out_org49,add_all_x.data_out_org50,add_all_x.data_out_org51,add_all_x.data_out_org52,add_all_x.data_out_org53,add_all_x.data_out_org54,add_all_x.data_out_org55,add_all_x.data_out_org56,add_all_x.data_out_org57,add_all_x.data_out_org58,add_all_x.data_out_org59,add_all_x.data_out_org60,add_all_x.data_out_org61,add_all_x.data_out_org62,
+            add_all_x.data_out_org65,add_all_x.data_out_org66,add_all_x.data_out_org67,add_all_x.data_out_org68,add_all_x.data_out_org69,add_all_x.data_out_org70,add_all_x.data_out_org71,add_all_x.data_out_org72,add_all_x.data_out_org73,add_all_x.data_out_org74,add_all_x.data_out_org75,add_all_x.data_out_org76,add_all_x.data_out_org77,add_all_x.data_out_org78,
+            add_all_x.data_out_org81,add_all_x.data_out_org82,add_all_x.data_out_org83,add_all_x.data_out_org84,add_all_x.data_out_org85,add_all_x.data_out_org86,add_all_x.data_out_org87,add_all_x.data_out_org88,add_all_x.data_out_org89,add_all_x.data_out_org90,add_all_x.data_out_org91,add_all_x.data_out_org92,add_all_x.data_out_org93,add_all_x.data_out_org94,
+            add_all_x.data_out_org97,add_all_x.data_out_org98,add_all_x.data_out_org99,add_all_x.data_out_org100,add_all_x.data_out_org101,add_all_x.data_out_org102,add_all_x.data_out_org103,add_all_x.data_out_org104,add_all_x.data_out_org105,add_all_x.data_out_org106,add_all_x.data_out_org107,add_all_x.data_out_org108,add_all_x.data_out_org109,add_all_x.data_out_org110,
+add_all_x.sg_out17,add_all_x.sg_out18,add_all_x.sg_out19,add_all_x.sg_out20,add_all_x.sg_out21,add_all_x.sg_out22,add_all_x.sg_out23,add_all_x.sg_out24,add_all_x.sg_out25,add_all_x.sg_out26,add_all_x.sg_out27,add_all_x.sg_out28,add_all_x.sg_out29,add_all_x.sg_out30,
+            add_all_x.sg_out33,add_all_x.sg_out34,add_all_x.sg_out35,add_all_x.sg_out36,add_all_x.sg_out37,add_all_x.sg_out38,add_all_x.sg_out39,add_all_x.sg_out40,add_all_x.sg_out41,add_all_x.sg_out42,add_all_x.sg_out43,add_all_x.sg_out44,add_all_x.sg_out45,add_all_x.sg_out46,
+            add_all_x.sg_out49,add_all_x.sg_out50,add_all_x.sg_out51,add_all_x.sg_out52,add_all_x.sg_out53,add_all_x.sg_out54,add_all_x.sg_out55,add_all_x.sg_out56,add_all_x.sg_out57,add_all_x.sg_out58,add_all_x.sg_out59,add_all_x.sg_out60,add_all_x.sg_out61,add_all_x.sg_out62,
+            add_all_x.sg_out65,add_all_x.sg_out66,add_all_x.sg_out67,add_all_x.sg_out68,add_all_x.sg_out69,add_all_x.sg_out70,add_all_x.sg_out71,add_all_x.sg_out72,add_all_x.sg_out73,add_all_x.sg_out74,add_all_x.sg_out75,add_all_x.sg_out76,add_all_x.sg_out77,add_all_x.sg_out78,
+            add_all_x.sg_out81,add_all_x.sg_out82,add_all_x.sg_out83,add_all_x.sg_out84,add_all_x.sg_out85,add_all_x.sg_out86,add_all_x.sg_out87,add_all_x.sg_out88,add_all_x.sg_out89,add_all_x.sg_out90,add_all_x.sg_out91,add_all_x.sg_out92,add_all_x.sg_out93,add_all_x.sg_out94,
+            add_all_x.sg_out97,add_all_x.sg_out98,add_all_x.sg_out99,add_all_x.sg_out100,add_all_x.sg_out101,add_all_x.sg_out102,add_all_x.sg_out103,add_all_x.sg_out104,add_all_x.sg_out105,add_all_x.sg_out106,add_all_x.sg_out107,add_all_x.sg_out108,add_all_x.sg_out109,add_all_x.sg_out110,
+add_all_x.all_sg_out17,add_all_x.all_sg_out18,add_all_x.all_sg_out19,add_all_x.all_sg_out20,add_all_x.all_sg_out21,add_all_x.all_sg_out22,add_all_x.all_sg_out23,add_all_x.all_sg_out24,add_all_x.all_sg_out25,add_all_x.all_sg_out26,add_all_x.all_sg_out27,add_all_x.all_sg_out28,add_all_x.all_sg_out29,add_all_x.all_sg_out30,
+            add_all_x.all_sg_out33,add_all_x.all_sg_out34,add_all_x.all_sg_out35,add_all_x.all_sg_out36,add_all_x.all_sg_out37,add_all_x.all_sg_out38,add_all_x.all_sg_out39,add_all_x.all_sg_out40,add_all_x.all_sg_out41,add_all_x.all_sg_out42,add_all_x.all_sg_out43,add_all_x.all_sg_out44,add_all_x.all_sg_out45,add_all_x.all_sg_out46,
+            add_all_x.all_sg_out49,add_all_x.all_sg_out50,add_all_x.all_sg_out51,add_all_x.all_sg_out52,add_all_x.all_sg_out53,add_all_x.all_sg_out54,add_all_x.all_sg_out55,add_all_x.all_sg_out56,add_all_x.all_sg_out57,add_all_x.all_sg_out58,add_all_x.all_sg_out59,add_all_x.all_sg_out60,add_all_x.all_sg_out61,add_all_x.all_sg_out62,
+            add_all_x.all_sg_out65,add_all_x.all_sg_out66,add_all_x.all_sg_out67,add_all_x.all_sg_out68,add_all_x.all_sg_out69,add_all_x.all_sg_out70,add_all_x.all_sg_out71,add_all_x.all_sg_out72,add_all_x.all_sg_out73,add_all_x.all_sg_out74,add_all_x.all_sg_out75,add_all_x.all_sg_out76,add_all_x.all_sg_out77,add_all_x.all_sg_out78,
+            add_all_x.all_sg_out81,add_all_x.all_sg_out82,add_all_x.all_sg_out83,add_all_x.all_sg_out84,add_all_x.all_sg_out85,add_all_x.all_sg_out86,add_all_x.all_sg_out87,add_all_x.all_sg_out88,add_all_x.all_sg_out89,add_all_x.all_sg_out90,add_all_x.all_sg_out91,add_all_x.all_sg_out92,add_all_x.all_sg_out93,add_all_x.all_sg_out94,
+            add_all_x.all_sg_out97,add_all_x.all_sg_out98,add_all_x.all_sg_out99,add_all_x.all_sg_out100,add_all_x.all_sg_out101,add_all_x.all_sg_out102,add_all_x.all_sg_out103,add_all_x.all_sg_out104,add_all_x.all_sg_out105,add_all_x.all_sg_out106,add_all_x.all_sg_out107,add_all_x.all_sg_out108,add_all_x.all_sg_out109,add_all_x.all_sg_out110,
+                  0b1 ,start_reg,goal_reg ,dig_exit,distance_count,add_all_x.wall_end);
+                _display("exit %b,dig_exit%b",kanwa_exit,dig_exit);
+				distance_count++;
+                goto kanwa_label;
+            }
+        
+            out_do(add_all_x.data_out_index17,add_all_x.data_out_index18,add_all_x.data_out_index19,add_all_x.data_out_index20,add_all_x.data_out_index21,add_all_x.data_out_index22,add_all_x.data_out_index23,add_all_x.data_out_index24,add_all_x.data_out_index25,add_all_x.data_out_index26,add_all_x.data_out_index27,add_all_x.data_out_index28,add_all_x.data_out_index29,add_all_x.data_out_index30,
+add_all_x.data_out_index33,add_all_x.data_out_index34,add_all_x.data_out_index35,add_all_x.data_out_index36,add_all_x.data_out_index37,add_all_x.data_out_index38,add_all_x.data_out_index39,add_all_x.data_out_index40,add_all_x.data_out_index41,add_all_x.data_out_index42,add_all_x.data_out_index43,add_all_x.data_out_index44,add_all_x.data_out_index45,add_all_x.data_out_index46,
+add_all_x.data_out_index49,add_all_x.data_out_index50,add_all_x.data_out_index51,add_all_x.data_out_index52,add_all_x.data_out_index53,add_all_x.data_out_index54,add_all_x.data_out_index55,add_all_x.data_out_index56,add_all_x.data_out_index57,add_all_x.data_out_index58,add_all_x.data_out_index59,add_all_x.data_out_index60,add_all_x.data_out_index61,add_all_x.data_out_index62,
+add_all_x.data_out_index65,add_all_x.data_out_index66,add_all_x.data_out_index67,add_all_x.data_out_index68,add_all_x.data_out_index69,add_all_x.data_out_index70,add_all_x.data_out_index71,add_all_x.data_out_index72,add_all_x.data_out_index73,add_all_x.data_out_index74,add_all_x.data_out_index75,add_all_x.data_out_index76,add_all_x.data_out_index77,add_all_x.data_out_index78,
+add_all_x.data_out_index81,add_all_x.data_out_index82,add_all_x.data_out_index83,add_all_x.data_out_index84,add_all_x.data_out_index85,add_all_x.data_out_index86,add_all_x.data_out_index87,add_all_x.data_out_index88,add_all_x.data_out_index89,add_all_x.data_out_index90,add_all_x.data_out_index91,add_all_x.data_out_index92,add_all_x.data_out_index93,add_all_x.data_out_index94,
+add_all_x.data_out_index97,add_all_x.data_out_index98,add_all_x.data_out_index99,add_all_x.data_out_index100,add_all_x.data_out_index101,add_all_x.data_out_index102,add_all_x.data_out_index103,add_all_x.data_out_index104,add_all_x.data_out_index105,add_all_x.data_out_index106,add_all_x.data_out_index107,add_all_x.data_out_index108,add_all_x.data_out_index109,add_all_x.data_out_index110);
+        }
+    }
+    func kanwa_s{
+        even:=even_w1;
+        add_all_x.in_do(data_wire17,data_wire18,data_wire19,data_wire20,data_wire21,data_wire22,data_wire23,data_wire24,data_wire25,data_wire26,data_wire27,data_wire28,data_wire29,data_wire30,
+            data_wire33,data_wire34,data_wire35,data_wire36,data_wire37,data_wire38,data_wire39,data_wire40,data_wire41,data_wire42,data_wire43,data_wire44,data_wire45,data_wire46,
+            data_wire49,data_wire50,data_wire51,data_wire52,data_wire53,data_wire54,data_wire55,data_wire56,data_wire57,data_wire58,data_wire59,data_wire60,data_wire61,data_wire62,
+            data_wire65,data_wire66,data_wire67,data_wire68,data_wire69,data_wire70,data_wire71,data_wire72,data_wire73,data_wire74,data_wire75,data_wire76,data_wire77,data_wire78,
+            data_wire81,data_wire82,data_wire83,data_wire84,data_wire85,data_wire86,data_wire87,data_wire88,data_wire89,data_wire90,data_wire91,data_wire92,data_wire93,data_wire94,
+            data_wire97,data_wire98,data_wire99,data_wire100,data_wire101,data_wire102,data_wire103,data_wire104,data_wire105,data_wire106,data_wire107,data_wire108,data_wire109,data_wire110,
+org17,org18,org19,org20,org21,org22,org23,org24,org25,org26,org27,org28,org29,org30,
+org33,org34,org35,org36,org37,org38,org39,org40,org41,org42,org43,org44,org45,org46,
+org49,org50,org51,org52,org53,org54,org55,org56,org57,org58,org59,org60,org61,org62,
+org65,org66,org67,org68,org69,org70,org71,org72,org73,org74,org75,org76,org77,org78,
+org81,org82,org83,org84,org85,org86,org87,org88,org89,org90,org91,org92,org93,org94,
+org97,org98,org99,org100,org101,org102,org103,org104,org105,org106,org107,org108,org109,org110,
+sg17,sg18,sg19,sg20,sg21,sg22,sg23,sg24,sg25,sg26,sg27,sg28,sg29,sg30,
+sg33,sg34,sg35,sg36,sg37,sg38,sg39,sg40,sg41,sg42,sg43,sg44,sg45,sg46,
+sg49,sg50,sg51,sg52,sg53,sg54,sg55,sg56,sg57,sg58,sg59,sg60,sg61,sg62,
+sg65,sg66,sg67,sg68,sg69,sg70,sg71,sg72,sg73,sg74,sg75,sg76,sg77,sg78,
+sg81,sg82,sg83,sg84,sg85,sg86,sg87,sg88,sg89,sg90,sg91,sg92,sg93,sg94,
+sg97,sg98,sg99,sg100,sg101,sg102,sg103,sg104,sg105,sg106,sg107,sg108,sg109,sg110,
+all_s_g17,all_s_g18,all_s_g19,all_s_g20,all_s_g21,all_s_g22,all_s_g23,all_s_g24,all_s_g25,all_s_g26,all_s_g27,all_s_g28,all_s_g29,all_s_g30,
+all_s_g33,all_s_g34,all_s_g35,all_s_g36,all_s_g37,all_s_g38,all_s_g39,all_s_g40,all_s_g41,all_s_g42,all_s_g43,all_s_g44,all_s_g45,all_s_g46,
+all_s_g49,all_s_g50,all_s_g51,all_s_g52,all_s_g53,all_s_g54,all_s_g55,all_s_g56,all_s_g57,all_s_g58,all_s_g59,all_s_g60,all_s_g61,all_s_g62,
+all_s_g65,all_s_g66,all_s_g67,all_s_g68,all_s_g69,all_s_g70,all_s_g71,all_s_g72,all_s_g73,all_s_g74,all_s_g75,all_s_g76,all_s_g77,all_s_g78,
+all_s_g81,all_s_g82,all_s_g83,all_s_g84,all_s_g85,all_s_g86,all_s_g87,all_s_g88,all_s_g89,all_s_g90,all_s_g91,all_s_g92,all_s_g93,all_s_g94,
+all_s_g97,all_s_g98,all_s_g99,all_s_g100,all_s_g101,all_s_g102,all_s_g103,all_s_g104,all_s_g105,all_s_g106,all_s_g107,all_s_g108,all_s_g109,all_s_g110,
+            even_w1,start_w,goal_w,wall_w,distance_wire,wall_end_wire);       
+    }
+    func add_all_x.out_do{
+        seq{
+            {
+                ;
+            }
+            {
+            _display("
+%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,\n
+%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,\n
+%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,\n
+%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,\n
+%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,\n
+%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,%h,\n",add_all_x.data_out17,add_all_x.data_out18,add_all_x.data_out19,add_all_x.data_out20,add_all_x.data_out21,add_all_x.data_out22,add_all_x.data_out23,add_all_x.data_out24,add_all_x.data_out25,add_all_x.data_out26,add_all_x.data_out27,add_all_x.data_out28,add_all_x.data_out29,add_all_x.data_out30,
+add_all_x.data_out33,add_all_x.data_out34,add_all_x.data_out35,add_all_x.data_out36,add_all_x.data_out37,add_all_x.data_out38,add_all_x.data_out39,add_all_x.data_out40,add_all_x.data_out41,add_all_x.data_out42,add_all_x.data_out43,add_all_x.data_out44,add_all_x.data_out45,add_all_x.data_out46,
+add_all_x.data_out49,add_all_x.data_out50,add_all_x.data_out51,add_all_x.data_out52,add_all_x.data_out53,add_all_x.data_out54,add_all_x.data_out55,add_all_x.data_out56,add_all_x.data_out57,add_all_x.data_out58,add_all_x.data_out59,add_all_x.data_out60,add_all_x.data_out61,add_all_x.data_out62,
+add_all_x.data_out65,add_all_x.data_out66,add_all_x.data_out67,add_all_x.data_out68,add_all_x.data_out69,add_all_x.data_out70,add_all_x.data_out71,add_all_x.data_out72,add_all_x.data_out73,add_all_x.data_out74,add_all_x.data_out75,add_all_x.data_out76,add_all_x.data_out77,add_all_x.data_out78,
+add_all_x.data_out81,add_all_x.data_out82,add_all_x.data_out83,add_all_x.data_out84,add_all_x.data_out85,add_all_x.data_out86,add_all_x.data_out87,add_all_x.data_out88,add_all_x.data_out89,add_all_x.data_out90,add_all_x.data_out91,add_all_x.data_out92,add_all_x.data_out93,add_all_x.data_out94,
+add_all_x.data_out97,add_all_x.data_out98,add_all_x.data_out99,add_all_x.data_out100,add_all_x.data_out101,add_all_x.data_out102,add_all_x.data_out103,add_all_x.data_out104,add_all_x.data_out105,add_all_x.data_out106,add_all_x.data_out107,add_all_x.data_out108,add_all_x.data_out109,add_all_x.data_out110);
+		if(!even){
+			sub_x.subs_exe(
+add_all_x.data_out17,add_all_x.data_out19,add_all_x.data_out21,add_all_x.data_out23,add_all_x.data_out25,add_all_x.data_out27,add_all_x.data_out29,
+add_all_x.data_out34,add_all_x.data_out36,add_all_x.data_out38,add_all_x.data_out40,add_all_x.data_out42,add_all_x.data_out44,add_all_x.data_out46,
+add_all_x.data_out49,add_all_x.data_out51,add_all_x.data_out53,add_all_x.data_out55,add_all_x.data_out57,add_all_x.data_out59,add_all_x.data_out61,
+add_all_x.data_out66,add_all_x.data_out68,add_all_x.data_out70,add_all_x.data_out72,add_all_x.data_out74,add_all_x.data_out76,add_all_x.data_out78,
+add_all_x.data_out81,add_all_x.data_out83,add_all_x.data_out85,add_all_x.data_out87,add_all_x.data_out89,add_all_x.data_out91,add_all_x.data_out93,
+add_all_x.data_out98,add_all_x.data_out100,add_all_x.data_out102,add_all_x.data_out104,add_all_x.data_out106,add_all_x.data_out108,add_all_x.data_out110,
+add_all_x.data_out_index17,add_all_x.data_out_index19,add_all_x.data_out_index21,add_all_x.data_out_index23,add_all_x.data_out_index25,add_all_x.data_out_index27,add_all_x.data_out_index29,
+add_all_x.data_out_index34,add_all_x.data_out_index36,add_all_x.data_out_index38,add_all_x.data_out_index40,add_all_x.data_out_index42,add_all_x.data_out_index44,add_all_x.data_out_index46,
+add_all_x.data_out_index49,add_all_x.data_out_index51,add_all_x.data_out_index53,add_all_x.data_out_index55,add_all_x.data_out_index57,add_all_x.data_out_index59,add_all_x.data_out_index61,
+add_all_x.data_out_index66,add_all_x.data_out_index68,add_all_x.data_out_index70,add_all_x.data_out_index72,add_all_x.data_out_index74,add_all_x.data_out_index76,add_all_x.data_out_index78,
+add_all_x.data_out_index81,add_all_x.data_out_index83,add_all_x.data_out_index85,add_all_x.data_out_index87,add_all_x.data_out_index89,add_all_x.data_out_index91,add_all_x.data_out_index93,
+add_all_x.data_out_index98,add_all_x.data_out_index100,add_all_x.data_out_index102,add_all_x.data_out_index104,add_all_x.data_out_index106,add_all_x.data_out_index108,add_all_x.data_out_index110
+			);
+		}else{
+			sub_x.subs_exe(
+add_all_x.data_out18,add_all_x.data_out20,add_all_x.data_out22,add_all_x.data_out24,add_all_x.data_out26,add_all_x.data_out28,add_all_x.data_out30,
+add_all_x.data_out33,add_all_x.data_out35,add_all_x.data_out37,add_all_x.data_out39,add_all_x.data_out41,add_all_x.data_out43,add_all_x.data_out45,
+add_all_x.data_out50,add_all_x.data_out52,add_all_x.data_out54,add_all_x.data_out56,add_all_x.data_out58,add_all_x.data_out60,add_all_x.data_out62,
+add_all_x.data_out65,add_all_x.data_out67,add_all_x.data_out69,add_all_x.data_out71,add_all_x.data_out73,add_all_x.data_out75,add_all_x.data_out77,
+add_all_x.data_out82,add_all_x.data_out84,add_all_x.data_out86,add_all_x.data_out88,add_all_x.data_out90,add_all_x.data_out92,add_all_x.data_out94,
+add_all_x.data_out97,add_all_x.data_out99,add_all_x.data_out101,add_all_x.data_out103,add_all_x.data_out105,add_all_x.data_out107,add_all_x.data_out109,
+
+add_all_x.data_out_index18,add_all_x.data_out_index20,add_all_x.data_out_index22,add_all_x.data_out_index24,add_all_x.data_out_index26,add_all_x.data_out_index28,add_all_x.data_out_index30,
+add_all_x.data_out_index33,add_all_x.data_out_index35,add_all_x.data_out_index37,add_all_x.data_out_index39,add_all_x.data_out_index41,add_all_x.data_out_index43,add_all_x.data_out_index45,
+add_all_x.data_out_index50,add_all_x.data_out_index52,add_all_x.data_out_index54,add_all_x.data_out_index56,add_all_x.data_out_index58,add_all_x.data_out_index60,add_all_x.data_out_index62,
+add_all_x.data_out_index65,add_all_x.data_out_index67,add_all_x.data_out_index69,add_all_x.data_out_index71,add_all_x.data_out_index73,add_all_x.data_out_index75,add_all_x.data_out_index77,
+add_all_x.data_out_index82,add_all_x.data_out_index84,add_all_x.data_out_index86,add_all_x.data_out_index88,add_all_x.data_out_index90,add_all_x.data_out_index92,add_all_x.data_out_index94,
+add_all_x.data_out_index97,add_all_x.data_out_index99,add_all_x.data_out_index101,add_all_x.data_out_index103,add_all_x.data_out_index105,add_all_x.data_out_index107,add_all_x.data_out_index109
+			);	
+		}
+            
+	    if(dig_exit==0){
+			kanwa_exit:=0;
+	     }else{
+                kanwa_exit++;
+                
+            }
+           //_display("sub %d",sub_x.sub_array_out);
+            }
+        }       
+    }
+    
+}

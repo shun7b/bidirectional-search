@@ -1,0 +1,124 @@
+#include "macro.inc"
+%i "add_map.inc"
+#include "mul_bit.inc"
+module add_map{
+	reg data_out_index_reg[BIT]=BIT'b0;
+	reg data_out_reg[BIT]=BIT'b0;
+	reg near_reg[BIT]=BIT'b0;
+	reg wall_reg=0b0;
+	reg org_reg[BIT]=BIT'b0;
+	reg org_near_reg[BIT]=BIT'b0;
+	reg sg_reg[2]=2'b0;
+	reg sg_near_reg[2]=2'b0;
+	reg count[8]=8'b0;
+  reg all_sg[MAP_SIZE]=MAP_SIZE'b0;
+	reg now_reg[BIT]=BIT'b0;
+	reg near_point_reg[BIT]=BIT'b0;
+  reg all_sg_near[MAP_SIZE]=MAP_SIZE'b0;
+  reg now_all_sg_reg[MAP_SIZE]=MAP_SIZE'b0;
+	wire now_all_sg[MAP_SIZE];
+	data_out_index=data_out_index_reg;
+	data_out=data_out_reg;
+	data_near=near_reg;
+	data_org=org_reg;
+	data_org_near=org_near_reg;
+	s_g=sg_reg;
+	
+	s_g_near=sg_near_reg;
+	all_s_g=all_sg;
+	all_s_g_near=all_sg_near;
+	wall_t_out=wall_reg;
+	if(sg_reg==0b11){
+		end_wall=all_sg_up|all_sg_down|all_sg_left|all_sg_right|now_all_sg<<now;
+	}else{
+		end_wall=MAP_SIZE'(0b0);
+	}
+	func add_exe{
+		wire div[3];
+		wire sg_w[2];
+		wire sum_value[BIT+1];
+		wire add_sum_all[BIT-1];
+		wire add_sum_all_2[BIT];
+		mul_bit mul_bit_x[2];
+		wire mods;
+		wire add_bit[BIT+BIT+2];
+		wire add_mul_return[BIT];
+		wire data_out_w[BIT];	
+		wire pull_wall; 
+		wire min[BIT];
+		wire max[BIT];
+	_display("\nnow=%ddata_out_index_reg=%d,data_out_reg=%d,org_reg=%d,near_reg=%d,orgnear_reg=%d,distance=%d,sg_w=%d,sg_near_reg=%dall_t_in=%d\n",now,data_out_index_reg,data_out_reg,org_reg,near_reg,org_near_reg,distance,sg_w,sg_near_reg,wall_t_in);
+		near_reg:=up;
+		sg_near_reg:=sg_reg;
+		near_point_reg:=now;
+		now_reg:=near_point_reg;
+		if((moto_org==WALL)){
+			org_near_reg:=moto_org_near;
+			org_reg:=moto_org;
+			data_out_reg:=WALL;
+			data_out_index_reg:=WALL;
+			wall_reg:=wall_t_in;
+			sg_w=0b00;
+			sg_reg:=0b00;
+			now_all_sg=MAP_SIZE'(0b1);
+		}else if(now==goal){
+			now_all_sg=MAP_SIZE'(0b1);
+			org_near_reg:=moto_org_near;
+			org_reg:=moto_org;
+			data_out_reg:=GOAL;
+			data_out_index_reg:=GOAL;
+			wall_reg:=wall_t_in;
+			sg_w=0b10;
+			sg_reg:=0b10;
+		}else if(now==start){
+			now_all_sg=MAP_SIZE'(0b1);
+			org_near_reg:=moto_org_near;
+			org_reg:=moto_org;
+			data_out_reg:=START;
+			data_out_index_reg:=START;
+			wall_reg:=wall_t_in;
+			sg_w=0b01;
+			sg_reg:=0b01;
+		}else if(wall_t_in){
+			wire all_sg_wire[MAP_SIZE];
+			all_sg_wire=all_sg_up|all_sg_down|all_sg_left|all_sg_right;
+			org_near_reg:=moto_org_near;
+			org_reg:=moto_org;
+			if(~wall_end_in[now]){
+				data_out_reg:=WALL;
+				data_out_index_reg:=WALL;
+			}
+			if(wall_end_in[now]){
+					data_out_reg:=moto;
+					data_out_index_reg:=moto;
+			}
+			wall_reg:=wall_t_in;
+		}else{
+			org_reg:=moto_org;
+			org_near_reg:=moto_org_near;
+				sg_w=sg_up|sg_down|sg_left|sg_right;
+				sg_reg:=sg_w;
+				if(sg_w!=sg_near_reg){
+					now_all_sg=MAP_SIZE'(0b1);
+					all_sg:=all_sg_up|all_sg_down|all_sg_left|all_sg_right|now_all_sg<<now;
+					if(sg_w==0b10){
+						data_out_reg:=distance;
+					  wall_reg:=wall_t_in;	
+					}else if(sg_w==0b01){
+						data_out_reg:=BIT'(0dMAP_SIZE)-BIT'(distance);
+					  wall_reg:=wall_t_in;	
+					}else if(sg_w==0b11){
+						data_out_reg:=BIT'(0dMAP_SIZE)-BIT'(distance);
+					  wall_reg:=1;	
+
+					}
+				}else if(sg_w==0b00){
+							data_out_reg:=WALL;
+						  data_out_index_reg:=WALL;
+				}else{		
+					data_out_reg:=moto;
+					data_out_index_reg:=moto;
+				}
+			}
+	}
+}
