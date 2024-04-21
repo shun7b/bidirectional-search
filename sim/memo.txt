@@ -1,0 +1,1 @@
+used NSL2VL (NSLcore) and ivrilog,gtkwave
