@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sun Apr 21 09:44:24 2024
+/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 01:49:13 2024
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -18734,7 +18734,7 @@ $display("Warning: control hazard(kanwa:_sub_x_subs_exe) at %d",$time);
 (_reg_1)? 
 // synthesis translate_on
 // synopsys translate_on
-((_reg_1)?((((((kanwa_exit < 3'b011)|(dig_exit==1'b0))&(start_reg != (goal_reg-8'b00000001)))&(start_reg != (goal_reg+8'b00000001)))&(start_reg != (goal_reg-8'b00010000)))&(start_reg != (goal_reg+8'b00010000))):1'b0)
+((_reg_1)?((((((kanwa_exit < 3'b001)|(dig_exit==1'b0))&(start_reg != (goal_reg-8'b00000001)))&(start_reg != (goal_reg+8'b00000001)))&(start_reg != (goal_reg-8'b00010000)))&(start_reg != (goal_reg+8'b00010000))):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
@@ -18805,7 +18805,7 @@ always @(posedge m_clock)
   begin
     if(_reg_8)
     begin
-    $display("h,h,h,h,h,h,h,h,h,h,h,h,h,h,\nh,h,h,h,h,h,h,h,h,h,h,h,h,h,\nh,h,h,h,h,h,h,h,h,h,h,h,h,h,\nh,h,h,h,h,h,h,h,h,h,h,h,h,h,\nh,h,h,h,h,h,h,h,h,h,h,h,h,h,\nh,h,h,h,h,h,h,h,h,h,h,h,h,h,\n",_add_all_x_data_out17,_add_all_x_data_out18,_add_all_x_data_out19,_add_all_x_data_out20,_add_all_x_data_out21,_add_all_x_data_out22,_add_all_x_data_out23,_add_all_x_data_out24,_add_all_x_data_out25,_add_all_x_data_out26,_add_all_x_data_out27,_add_all_x_data_out28,_add_all_x_data_out29,_add_all_x_data_out30,_add_all_x_data_out33,_add_all_x_data_out34,_add_all_x_data_out35,_add_all_x_data_out36,_add_all_x_data_out37,_add_all_x_data_out38,_add_all_x_data_out39,_add_all_x_data_out40,_add_all_x_data_out41,_add_all_x_data_out42,_add_all_x_data_out43,_add_all_x_data_out44,_add_all_x_data_out45,_add_all_x_data_out46,_add_all_x_data_out49,_add_all_x_data_out50,_add_all_x_data_out51,_add_all_x_data_out52,_add_all_x_data_out53,_add_all_x_data_out54,_add_all_x_data_out55,_add_all_x_data_out56,_add_all_x_data_out57,_add_all_x_data_out58,_add_all_x_data_out59,_add_all_x_data_out60,_add_all_x_data_out61,_add_all_x_data_out62,_add_all_x_data_out65,_add_all_x_data_out66,_add_all_x_data_out67,_add_all_x_data_out68,_add_all_x_data_out69,_add_all_x_data_out70,_add_all_x_data_out71,_add_all_x_data_out72,_add_all_x_data_out73,_add_all_x_data_out74,_add_all_x_data_out75,_add_all_x_data_out76,_add_all_x_data_out77,_add_all_x_data_out78,_add_all_x_data_out81,_add_all_x_data_out82,_add_all_x_data_out83,_add_all_x_data_out84,_add_all_x_data_out85,_add_all_x_data_out86,_add_all_x_data_out87,_add_all_x_data_out88,_add_all_x_data_out89,_add_all_x_data_out90,_add_all_x_data_out91,_add_all_x_data_out92,_add_all_x_data_out93,_add_all_x_data_out94,_add_all_x_data_out97,_add_all_x_data_out98,_add_all_x_data_out99,_add_all_x_data_out100,_add_all_x_data_out101,_add_all_x_data_out102,_add_all_x_data_out103,_add_all_x_data_out104,_add_all_x_data_out105,_add_all_x_data_out106,_add_all_x_data_out107,_add_all_x_data_out108,_add_all_x_data_out109,_add_all_x_data_out110);
+    $display("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\n%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\n%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\n%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\n%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\n%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,\n",_add_all_x_data_out17,_add_all_x_data_out18,_add_all_x_data_out19,_add_all_x_data_out20,_add_all_x_data_out21,_add_all_x_data_out22,_add_all_x_data_out23,_add_all_x_data_out24,_add_all_x_data_out25,_add_all_x_data_out26,_add_all_x_data_out27,_add_all_x_data_out28,_add_all_x_data_out29,_add_all_x_data_out30,_add_all_x_data_out33,_add_all_x_data_out34,_add_all_x_data_out35,_add_all_x_data_out36,_add_all_x_data_out37,_add_all_x_data_out38,_add_all_x_data_out39,_add_all_x_data_out40,_add_all_x_data_out41,_add_all_x_data_out42,_add_all_x_data_out43,_add_all_x_data_out44,_add_all_x_data_out45,_add_all_x_data_out46,_add_all_x_data_out49,_add_all_x_data_out50,_add_all_x_data_out51,_add_all_x_data_out52,_add_all_x_data_out53,_add_all_x_data_out54,_add_all_x_data_out55,_add_all_x_data_out56,_add_all_x_data_out57,_add_all_x_data_out58,_add_all_x_data_out59,_add_all_x_data_out60,_add_all_x_data_out61,_add_all_x_data_out62,_add_all_x_data_out65,_add_all_x_data_out66,_add_all_x_data_out67,_add_all_x_data_out68,_add_all_x_data_out69,_add_all_x_data_out70,_add_all_x_data_out71,_add_all_x_data_out72,_add_all_x_data_out73,_add_all_x_data_out74,_add_all_x_data_out75,_add_all_x_data_out76,_add_all_x_data_out77,_add_all_x_data_out78,_add_all_x_data_out81,_add_all_x_data_out82,_add_all_x_data_out83,_add_all_x_data_out84,_add_all_x_data_out85,_add_all_x_data_out86,_add_all_x_data_out87,_add_all_x_data_out88,_add_all_x_data_out89,_add_all_x_data_out90,_add_all_x_data_out91,_add_all_x_data_out92,_add_all_x_data_out93,_add_all_x_data_out94,_add_all_x_data_out97,_add_all_x_data_out98,_add_all_x_data_out99,_add_all_x_data_out100,_add_all_x_data_out101,_add_all_x_data_out102,_add_all_x_data_out103,_add_all_x_data_out104,_add_all_x_data_out105,_add_all_x_data_out106,_add_all_x_data_out107,_add_all_x_data_out108,_add_all_x_data_out109,_add_all_x_data_out110);
     end
   end
 
@@ -20081,5 +20081,5 @@ else if (_reg_9)
 end
 endmodule
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sun Apr 21 09:44:24 2024
+/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 01:49:13 2024
  Licensed to :EVALUATION USER*/
