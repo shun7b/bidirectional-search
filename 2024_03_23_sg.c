@@ -68,19 +68,22 @@ int main(void){
 					for(count=0;count<MAPSIZE;count++){
 						map_org[count]=map_display[count];
 						map[0][count]=WALL;
-						map[5][count]=WALL;
+						map[5][count]=0;
 						mapafter[count]=WALL;
 						map[1][count]=0;
-						map[1][count]=0;
+						map[2][count]=0;
 						map[3][count]=0;
 						map[4][count]=0;
 						for(i=0;i<MAPSIZE;i++){
 							maps[i][count]=0;
 						}
+						maps[count][begin_point]=1;
+						maps[count][end_point]=1;
 					}
 					map[0][begin_point]=START;
 					map[0][end_point]=GOAL;
 					map[2][end_point]=1;
+					map[4][begin_point]=1;
 					printf("\n");
 					even=1;
 					clock_count=1;
@@ -96,11 +99,11 @@ int main(void){
 						sub_plot[count]=0;
 						subs[count]=0;
 					}
-                    mapafter[start]=WALL;
+//                    mapafter[start]=WALL;
 										map[4][start]=1;	
                     printf("\n\ns%d\n",start);
-					maps[start][start]=1;
-					maps[goal][goal]=1;
+//					maps[start][start]=1;
+//					maps[goal][goal]=1;
 					while(1){
 						evens=even;
 						for(count_value=0;count_value<MAPSIZE/2;count_value++){
@@ -121,18 +124,20 @@ int main(void){
 									//	map[1][plot_value]=(map[1][plot_value+1]|map[1][plot_value-1]|map[1][plot_value-WIDTH]|map[1][plot_value+WIDTH]);
 								map[2][plot_value]=(map[2][plot_value+1]|map[2][plot_value-1]|map[2][plot_value-WIDTH]|map[2][plot_value+WIDTH]);
 								map[3][plot_value]=map[4][plot_value];
+								map[4][plot_value]=0;
 								map[4][plot_value]=	(map[4][plot_value+1]|map[4][plot_value-1]|map[4][plot_value-WIDTH]|map[4][plot_value+WIDTH]);
 
               if(map[2][plot_value]!=map[1][plot_value]){			
 						    	map[0][plot_value]=clock_count;
                                 open_flag=1;
 									maps[plot_value][plot_value]=1;
+									printf("check");
 								for(j=0;j<MAPSIZE;++j){
 									if(map_org[j]!=-1){	
-										maps[plot_value][j]|=maps[plot_value+1][j];
-										maps[plot_value][j]|=maps[plot_value-1][j];
 										maps[plot_value][j]|=maps[plot_value+WIDTH][j];
 										maps[plot_value][j]|=maps[plot_value-WIDTH][j];
+										maps[plot_value][j]|=maps[plot_value+1][j];
+										maps[plot_value][j]|=maps[plot_value-1][j];
 									}
 								}
 								for(i=0;i<MAPSIZE;i++){
@@ -151,10 +156,10 @@ int main(void){
 								maps[plot_value][plot_value]=1;
 								for(j=0;j<MAPSIZE;++j){
 									if(map_org[j]!=-1){	
-										maps[plot_value][j]|=maps[plot_value+1][j];
-										maps[plot_value][j]|=maps[plot_value-1][j];
 										maps[plot_value][j]|=maps[plot_value+WIDTH][j];
 										maps[plot_value][j]|=maps[plot_value-WIDTH][j];
+										maps[plot_value][j]|=maps[plot_value+1][j];
+										maps[plot_value][j]|=maps[plot_value-1][j];
 									}
 								}		
 								for(i=0;i<MAPSIZE;i++){
@@ -171,8 +176,8 @@ int main(void){
 							if(map[2][plot_value]&&map[4][plot_value]){
 								end_potential=1;
 								for(i=0;i<MAPSIZE;i++){
-									if(!maps[plot_value][i]){
-										map[0][i]=1023;
+									if(1==maps[plot_value][i]){
+										map[5][i]=1;
 									}
 									printf("%4d",maps[plot_value][i]);
 									if(i%WIDTH==WIDTH-1){
@@ -180,7 +185,6 @@ int main(void){
 									}
 								}
 										printf("\n%d\n",plot_value);
-								break;
 							}
 						
 						}
@@ -193,6 +197,16 @@ int main(void){
 						}
 						printf("\n");
 						if(end_potential){
+								for(i=0;i<MAPSIZE;i++){
+									if(0==map[5][i]){
+										map[0][i]=WALL;
+									}
+									printf("%4d",map[0][i]);
+									if(i%WIDTH==WIDTH-1){
+										printf("--\n");
+									}
+								}
+										printf("\n%d\n",plot_value);
 									end_clock = clock();
                           break;
            }
