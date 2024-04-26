@@ -138,7 +138,7 @@ add_all_x.all_sg_out17,add_all_x.all_sg_out18,add_all_x.all_sg_out19,add_all_x.a
 								
 				distance_count++;
 	}	
-            if((kanwa_exit<0b011||dig_exit==1'b0)&&start_reg!=goal_reg-1&&start_reg!=goal_reg+1&&start_reg!=goal_reg-WIDTH&&start_reg!=goal_reg+WIDTH){
+            if((kanwa_exit<0b001||dig_exit==1'b0)&&start_reg!=goal_reg-1&&start_reg!=goal_reg+1&&start_reg!=goal_reg-WIDTH&&start_reg!=goal_reg+WIDTH){
                 kanwa_s(add_all_x.data_out17,add_all_x.data_out18,add_all_x.data_out19,add_all_x.data_out20,add_all_x.data_out21,add_all_x.data_out22,add_all_x.data_out23,add_all_x.data_out24,add_all_x.data_out25,add_all_x.data_out26,add_all_x.data_out27,add_all_x.data_out28,add_all_x.data_out29,add_all_x.data_out30,
                 add_all_x.data_out33,add_all_x.data_out34,add_all_x.data_out35,add_all_x.data_out36,add_all_x.data_out37,add_all_x.data_out38,add_all_x.data_out39,add_all_x.data_out40,add_all_x.data_out41,add_all_x.data_out42,add_all_x.data_out43,add_all_x.data_out44,add_all_x.data_out45,add_all_x.data_out46,
                 add_all_x.data_out49,add_all_x.data_out50,add_all_x.data_out51,add_all_x.data_out52,add_all_x.data_out53,add_all_x.data_out54,add_all_x.data_out55,add_all_x.data_out56,add_all_x.data_out57,add_all_x.data_out58,add_all_x.data_out59,add_all_x.data_out60,add_all_x.data_out61,add_all_x.data_out62,
