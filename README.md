@@ -4,5 +4,6 @@ FMAX is 113.07 Mhz.<br>
 The number of execution clocks for the evaluation process of position energy is 12 clocks.<br>
 The evaluation process time for position energy is 106 ns.<br>
 The FPGA we used is EP2AGX45CU17C4.<br>
+Parallel processing of bidirectional search is 280 times faster on CPU for dijkstra method.<br>
 make<br>
 make clean<br>
