@@ -11,5 +11,6 @@ We used intel core i9 14900KS for the CPU.<br>
 We used 64GB of RAM (DDR5 4800Mhz) in the CPU.<br>
 ![loop_16_8](https://github.com/shun7b/bidirectional-search/assets/63786359/c7480b2c-1abe-4c2f-b5d3-d59eb1d7e8c7)
 <br>We set our starting point at 17 and our finishing point at 109.<br>
+We evaluated the potential energy and obtained the path using the steepest descent method.<br>
 make<br>
 make clean<br>
