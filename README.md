@@ -8,7 +8,7 @@ The FPGA we used is EP2AGX45CU17C4.<br>
 Parallel processing of bidirectional search is 280 times faster on CPU for dijkstra method.<br>
 The CPU clock frequency is 6.2 GHz.<br>
 We used intel core i9 14900KS for the CPU.<br>
-We used 64GB of RAM (DDR5 4800Mh) in the CPU.<br>
+We used 64GB of RAM (DDR5 4800Mhz) in the CPU.<br>
 
 make<br>
 make clean<br>
