@@ -1,0 +1,63 @@
+/*declare subs{
+    input data_index[240],data_in[240];
+    output data_index_out[240];
+    func_in subs_exe(data_index,data_in):data_index_out;
+}*/
+#include "macro.inc"
+%i "subs.inc"
+%i "sub_plot.inc"
+module subs{
+    sub_plot sub_plot_x[98];
+    reg sub_reg[BIT]=BIT'b0;
+    func subs_exe{
+
+{
+sub_plot_x[0].in_do(data_in17,data_index17);
+sub_plot_x[1].in_do(data_in19,data_index19);
+sub_plot_x[2].in_do(data_in21,data_index21);
+sub_plot_x[3].in_do(data_in23,data_index23);
+sub_plot_x[4].in_do(data_in25,data_index25);
+sub_plot_x[5].in_do(data_in27,data_index27);
+sub_plot_x[6].in_do(data_in29,data_index29);
+sub_plot_x[7].in_do(data_in33,data_index33);
+sub_plot_x[8].in_do(data_in35,data_index35);
+sub_plot_x[9].in_do(data_in37,data_index37);
+sub_plot_x[10].in_do(data_in39,data_index39);
+sub_plot_x[11].in_do(data_in41,data_index41);
+sub_plot_x[12].in_do(data_in43,data_index43);
+sub_plot_x[13].in_do(data_in45,data_index45);
+sub_plot_x[14].in_do(data_in49,data_index49);
+sub_plot_x[15].in_do(data_in51,data_index51);
+sub_plot_x[16].in_do(data_in53,data_index53);
+sub_plot_x[17].in_do(data_in55,data_index55);
+sub_plot_x[18].in_do(data_in57,data_index57);
+sub_plot_x[19].in_do(data_in59,data_index59);
+sub_plot_x[20].in_do(data_in61,data_index61);
+sub_plot_x[21].in_do(data_in65,data_index65);
+sub_plot_x[22].in_do(data_in67,data_index67);
+sub_plot_x[23].in_do(data_in69,data_index69);
+sub_plot_x[24].in_do(data_in71,data_index71);
+sub_plot_x[25].in_do(data_in73,data_index73);
+sub_plot_x[26].in_do(data_in75,data_index75);
+sub_plot_x[27].in_do(data_in77,data_index77);
+sub_plot_x[28].in_do(data_in81,data_index81);
+sub_plot_x[29].in_do(data_in83,data_index83);
+sub_plot_x[30].in_do(data_in85,data_index85);
+sub_plot_x[31].in_do(data_in87,data_index87);
+sub_plot_x[32].in_do(data_in89,data_index89);
+sub_plot_x[33].in_do(data_in91,data_index91);
+sub_plot_x[34].in_do(data_in93,data_index93);
+sub_plot_x[35].in_do(data_in97,data_index97);
+sub_plot_x[36].in_do(data_in99,data_index99);
+sub_plot_x[37].in_do(data_in101,data_index101);
+sub_plot_x[38].in_do(data_in103,data_index103);
+sub_plot_x[39].in_do(data_in105,data_index105);
+sub_plot_x[40].in_do(data_in107,data_index107);
+sub_plot_x[41].in_do(data_in109,data_index109);
+        
+         sub_reg:=sub_plot_x[0].sa|sub_plot_x[1].sa|sub_plot_x[2].sa|sub_plot_x[3].sa|sub_plot_x[4].sa|sub_plot_x[5].sa|sub_plot_x[6].sa|sub_plot_x[7].sa|sub_plot_x[8].sa|sub_plot_x[9].sa|sub_plot_x[10].sa|sub_plot_x[11].sa|sub_plot_x[12].sa|sub_plot_x[13].sa|sub_plot_x[14].sa|sub_plot_x[15].sa|sub_plot_x[16].sa|sub_plot_x[17].sa|sub_plot_x[18].sa|sub_plot_x[19].sa|sub_plot_x[20].sa|sub_plot_x[21].sa|sub_plot_x[22].sa|sub_plot_x[23].sa|sub_plot_x[24].sa|sub_plot_x[25].sa|sub_plot_x[26].sa|sub_plot_x[27].sa|sub_plot_x[28].sa|sub_plot_x[29].sa|sub_plot_x[30].sa|sub_plot_x[31].sa|sub_plot_x[32].sa|sub_plot_x[33].sa|sub_plot_x[34].sa|sub_plot_x[35].sa|sub_plot_x[36].sa|sub_plot_x[37].sa|sub_plot_x[38].sa|sub_plot_x[39].sa|sub_plot_x[40].sa|sub_plot_x[41].sa;
+
+}
+    }
+     sub_array_out=sub_reg;
+}
