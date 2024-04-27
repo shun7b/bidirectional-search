@@ -9,6 +9,7 @@ Parallel processing of bidirectional search is 280 times faster on CPU for dijks
 The CPU clock frequency is 6.2 GHz.<br>
 We used intel core i9 14900KS for the CPU.<br>
 We used 64GB of RAM (DDR5 4800Mhz) in the CPU.<br>
+![loop_16_8](https://github.com/shun7b/bidirectional-search/assets/63786359/c7480b2c-1abe-4c2f-b5d3-d59eb1d7e8c7)
 
 make<br>
 make clean<br>
