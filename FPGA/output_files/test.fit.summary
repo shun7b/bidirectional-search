@@ -1,0 +1,22 @@
+Fitter Status : Successful - Sat Apr 27 12:29:00 2024
+Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Revision Name : test
+Top-level Entity Name : test
+Family : Arria II GX
+Device : EP2AGX45CU17C4
+Timing Models : Final
+Logic utilization : 59 %
+    Combinational ALUTs : 16,931 / 36,100 ( 47 % )
+    Memory ALUTs : 0 / 18,050 ( 0 % )
+    Dedicated logic registers : 5,531 / 36,100 ( 15 % )
+Total registers : 5531
+Total pins : 3 / 176 ( 2 % )
+Total virtual pins : 0
+Total block memory bits : 0 / 2,939,904 ( 0 % )
+DSP block 18-bit elements : 0 / 232 ( 0 % )
+Total GXB Receiver Channel PCS : 0 / 4 ( 0 % )
+Total GXB Receiver Channel PMA : 0 / 4 ( 0 % )
+Total GXB Transmitter Channel PCS : 0 / 4 ( 0 % )
+Total GXB Transmitter Channel PMA : 0 / 4 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
+Total DLLs : 0 / 2 ( 0 % )

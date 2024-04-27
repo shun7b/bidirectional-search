@@ -1,0 +1,20 @@
+#include "macro.inc"
+%i "sub_plot.inc"
+//sub_plot_all[16]:=((16#((((16#(map[16]!=0xFFFF))&map[16])-((16#(map[16]!=0xFFFF))&map_wari_res[16]))[15]==1'b1))&{16'b0,((~(((16#(map[16]!=0xFFFF))&map[16])-((16#(map[16]!=0xFFFF))&map_wari_res[16])))+(15'b1))})+((16#((((16#(map[16]!=0xFFFF))&map[16])-((16#(map[16]!=0xFFFF))&map_wari_res[16]))[15]==1'b0))&((((16#(map[16]!=0xFFFF))&map[16])-((16#(map[16]!=0xFFFF))&map_wari_res[16]))));
+module sub_plot{
+    wire result[BIT];
+    func in_do{
+            
+        
+        if(moto!=BIT'b1){
+            result=moto-hikareru;
+            if(result[BIT-1]){
+                return ~result+BIT'b1;
+            }else{
+                return result;
+            }
+        }else{
+            return 0;
+        }
+    }
+}

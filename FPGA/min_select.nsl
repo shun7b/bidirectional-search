@@ -1,0 +1,13 @@
+#include "macro.inc"
+#include"min_select.inc"
+module min_select{
+	func min_select_exe{
+		if(inene1<inene2){
+			outplot=ud_lr1;
+			return inene1;
+		}else{
+			outplot=ud_lr2;
+			return inene2;
+		}
+	}
+}
