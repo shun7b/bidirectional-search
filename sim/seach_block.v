@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:45:50 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Mon May 20 03:44:04 2024
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -167,5 +167,5 @@ else if (in_do)
 end
 endmodule
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:45:50 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Mon May 20 03:44:04 2024
  Licensed to :EVALUATION USER*/

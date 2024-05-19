@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:45:50 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Mon May 20 03:57:00 2024
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -18734,7 +18734,7 @@ $display("Warning: control hazard(kanwa:_sub_x_subs_exe) at %d",$time);
 (_reg_1)? 
 // synthesis translate_on
 // synopsys translate_on
-((_reg_1)?((((((kanwa_exit < 3'b001)|(dig_exit==1'b0))&(start_reg != (goal_reg-8'b00000001)))&(start_reg != (goal_reg+8'b00000001)))&(start_reg != (goal_reg-8'b00010000)))&(start_reg != (goal_reg+8'b00010000))):1'b0)
+((_reg_1)?((((((kanwa_exit < 3'b010)|(dig_exit==1'b0))&(start_reg != (goal_reg-8'b00000001)))&(start_reg != (goal_reg+8'b00000001)))&(start_reg != (goal_reg-8'b00010000)))&(start_reg != (goal_reg+8'b00010000))):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
@@ -20081,5 +20081,5 @@ else if (_reg_9)
 end
 endmodule
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:45:50 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Mon May 20 03:57:00 2024
  Licensed to :EVALUATION USER*/
