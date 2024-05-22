@@ -9,6 +9,8 @@ module add_map{
 	reg org_reg[BIT]=BIT'b0;
 	reg org_near_reg[BIT]=BIT'b0;
 	reg sg_reg[2]=2'b0;
+	wire indata[MAP_SIZE];
+		wire sg_w[2];
 	reg sg_near_reg[2]=2'b0;
   reg all_sg[MAP_SIZE]=MAP_SIZE'b0;
   reg all_sg_near[MAP_SIZE]=MAP_SIZE'b0;
@@ -24,19 +26,17 @@ module add_map{
 	all_s_g_near=all_sg_near;
 	s_g_near=sg_near_reg;
 	wall_t_out=wall_reg;
-	if(wall_reg&&sg_reg==0b11){
+	if(sg_reg==0b11&&(wall_t_in)){
 		end_wall=(MAP_SIZE)'(all_sg);
 	}else{
 		end_wall=MAP_SIZE'(0b0);
 	}
 	func add_exe{
-		wire sg_w[2];
 		wire add_mul_return[BIT];
 		wire data_out_w[BIT];	
 		wire pull_wall; 
 		wire min[BIT];
 		wire max[BIT];
-		wire indata[MAP_SIZE];
 		near_reg:=up;
 		sg_near_reg:=sg_up;
 		
@@ -50,7 +50,6 @@ module add_map{
 			sg_w=0b00;
 			sg_reg:=0b00;
 			now_all_sg=MAP_SIZE'(0b1);
-			all_sg:=all_sg_near;
 		}else if(now==goal){
 			indata=(MAP_SIZE)'0b1;
 			now_all_sg=MAP_SIZE'(0b1);
@@ -76,18 +75,16 @@ module add_map{
 		}else if(wall_t_in){
 			org_near_reg:=moto_org_near;
 			org_reg:=moto_org;
-				if(~wall_end_in[now]){
+				if((~((wall_end_in)[now]))){
 					data_out_reg:=WALL;
 					data_out_index_reg:=WALL;
 				}
-				if(wall_end_in[now]){
-					_display("%b ",wall_end_in);
+				if((wall_end_in)[now]){
 						data_out_reg:=moto;
 						data_out_index_reg:=moto;
 				}
-				
  				wall_reg:=wall_t_in;
-		}else if(wall_reg==0){
+		}else if(wall_t_in==0){
 			org_reg:=moto_org;
 			org_near_reg:=moto_org_near;
 				sg_w=sg_up|sg_down|sg_left|sg_right;
@@ -102,6 +99,7 @@ module add_map{
 						data_out_reg:=BIT'(0dMAP_SIZE)-BIT'(distance);
 					  wall_reg:=wall_t_in;	
 					}else if(sg_w==0b11){
+							
 						data_out_reg:=BIT'(0dMAP_SIZE)-BIT'(distance);
 					  wall_reg:=1;	
 					}
