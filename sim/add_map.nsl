@@ -26,7 +26,7 @@ module add_map{
 	all_s_g_near=all_sg_near;
 	s_g_near=sg_near_reg;
 	wall_t_out=wall_reg;
-	if(sg_reg==0b11&&(wall_t_in)){
+	if((sg_near_reg==0b11)||(sg_reg==0b11)){
 		end_wall=(MAP_SIZE)'(all_sg);
 	}else{
 		end_wall=MAP_SIZE'(0b0);
@@ -39,7 +39,6 @@ module add_map{
 		wire max[BIT];
 		near_reg:=up;
 		sg_near_reg:=sg_up;
-		
 		all_sg_near:=all_sg_up;
 		if((moto_org==WALL)){
 			org_near_reg:=moto_org_near;
@@ -75,14 +74,15 @@ module add_map{
 		}else if(wall_t_in){
 			org_near_reg:=moto_org_near;
 			org_reg:=moto_org;
-				if((~((wall_end_in)[now]))){
+				if((~((wall_end_in)[now]))&&(wall_end_in!=(MAP_SIZE)'(0b0))){
 					data_out_reg:=WALL;
 					data_out_index_reg:=WALL;
-				}
-				if((wall_end_in)[now]){
+					
+				}else{
 						data_out_reg:=moto;
 						data_out_index_reg:=moto;
 				}
+				sg_reg:=sg_near_reg;
  				wall_reg:=wall_t_in;
 		}else if(wall_t_in==0){
 			org_reg:=moto_org;
@@ -99,7 +99,6 @@ module add_map{
 						data_out_reg:=BIT'(0dMAP_SIZE)-BIT'(distance);
 					  wall_reg:=wall_t_in;	
 					}else if(sg_w==0b11){
-							
 						data_out_reg:=BIT'(0dMAP_SIZE)-BIT'(distance);
 					  wall_reg:=1;	
 					}

@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Tue May 21 05:02:57 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Fri May 24 03:00:01 2024
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -18757,7 +18757,7 @@ always @(posedge m_clock)
   begin
     if((_reg_1&_net_4))
     begin
-    $display("exit %b,dig_exit%b",kanwa_exit,dig_exit);
+    $display("exit %b,dig_exit%b\nall%b",kanwa_exit,dig_exit,wall_end_kanwa);
     end
   end
 
@@ -18800,7 +18800,7 @@ always @(posedge m_clock)
   begin
     if(_reg_2)
     begin
-    $display("exit %b,dig_exit%b",kanwa_exit,dig_exit);
+    $display("exit %b,dig_exit%b,all%b",kanwa_exit,dig_exit,wall_end_kanwa);
     end
   end
 
@@ -20129,5 +20129,5 @@ else if (_reg_15)
 end
 endmodule
 
-/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Tue May 21 05:02:57 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Fri May 24 03:00:01 2024
  Licensed to :EVALUATION USER*/

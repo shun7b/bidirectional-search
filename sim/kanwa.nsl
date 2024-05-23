@@ -111,7 +111,7 @@ MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE
             }
    kanwa_label:
 {
-                _display("exit %b,dig_exit%b",kanwa_exit,dig_exit);
+                _display("exit %b,dig_exit%b,all%b",kanwa_exit,dig_exit,wall_end_kanwa);
             kanwa_s(add_all_x.data_out17,add_all_x.data_out18,add_all_x.data_out19,add_all_x.data_out20,add_all_x.data_out21,add_all_x.data_out22,add_all_x.data_out23,add_all_x.data_out24,add_all_x.data_out25,add_all_x.data_out26,add_all_x.data_out27,add_all_x.data_out28,add_all_x.data_out29,add_all_x.data_out30,
             add_all_x.data_out33,add_all_x.data_out34,add_all_x.data_out35,add_all_x.data_out36,add_all_x.data_out37,add_all_x.data_out38,add_all_x.data_out39,add_all_x.data_out40,add_all_x.data_out41,add_all_x.data_out42,add_all_x.data_out43,add_all_x.data_out44,add_all_x.data_out45,add_all_x.data_out46,
             add_all_x.data_out49,add_all_x.data_out50,add_all_x.data_out51,add_all_x.data_out52,add_all_x.data_out53,add_all_x.data_out54,add_all_x.data_out55,add_all_x.data_out56,add_all_x.data_out57,add_all_x.data_out58,add_all_x.data_out59,add_all_x.data_out60,add_all_x.data_out61,add_all_x.data_out62,
@@ -169,7 +169,7 @@ add_all_x.all_sg_out17,add_all_x.all_sg_out18,add_all_x.all_sg_out19,add_all_x.a
             add_all_x.all_sg_out97,add_all_x.all_sg_out98,add_all_x.all_sg_out99,add_all_x.all_sg_out100,add_all_x.all_sg_out101,add_all_x.all_sg_out102,add_all_x.all_sg_out103,add_all_x.all_sg_out104,add_all_x.all_sg_out105,add_all_x.all_sg_out106,add_all_x.all_sg_out107,add_all_x.all_sg_out108,add_all_x.all_sg_out109,add_all_x.all_sg_out110,
                   0b1 ,start_reg,goal_reg ,dig_exit,distance_count,(MAP_SIZE)'wall_end_kanwa);
             wall_end_kanwa:=(MAP_SIZE)'add_all_x.wall_end;
-                _display("exit %b,dig_exit%b",kanwa_exit,dig_exit);
+                _display("exit %b,dig_exit%b\nall%b",kanwa_exit,dig_exit,wall_end_kanwa);
 				distance_count++;
                 goto kanwa_label;
             }
