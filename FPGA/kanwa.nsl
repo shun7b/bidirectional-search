@@ -35,6 +35,7 @@ sg65[2],sg66[2],sg67[2],sg68[2],sg69[2],sg70[2],sg71[2],sg72[2],sg73[2],sg74[2],
 sg81[2],sg82[2],sg83[2],sg84[2],sg85[2],sg86[2],sg87[2],sg88[2],sg89[2],sg90[2],sg91[2],sg92[2],sg93[2],sg94[2],
 sg97[2],sg98[2],sg99[2],sg100[2],sg101[2],sg102[2],sg103[2],sg104[2],sg105[2],sg106[2],sg107[2],sg108[2],sg109[2],sg110[2];
 wire wall_end_wire[MAP_SIZE];
+reg wall_end_kanwa[MAP_SIZE];
 wire distance_wire[BIT];
 wire all_s_g17[MAP_SIZE],all_s_g18[MAP_SIZE],all_s_g19[MAP_SIZE],all_s_g20[MAP_SIZE],all_s_g21[MAP_SIZE],all_s_g22[MAP_SIZE],all_s_g23[MAP_SIZE],all_s_g24[MAP_SIZE],all_s_g25[MAP_SIZE],all_s_g26[MAP_SIZE],all_s_g27[MAP_SIZE],all_s_g28[MAP_SIZE],all_s_g29[MAP_SIZE],all_s_g30[MAP_SIZE],
 all_s_g33[MAP_SIZE],all_s_g34[MAP_SIZE],all_s_g35[MAP_SIZE],all_s_g36[MAP_SIZE],all_s_g37[MAP_SIZE],all_s_g38[MAP_SIZE],all_s_g39[MAP_SIZE],all_s_g40[MAP_SIZE],all_s_g41[MAP_SIZE],all_s_g42[MAP_SIZE],all_s_g43[MAP_SIZE],all_s_g44[MAP_SIZE],all_s_g45[MAP_SIZE],all_s_g46[MAP_SIZE],
@@ -102,13 +103,15 @@ MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE
 MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
 MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
 MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,MAP_SIZE'b0,
-                0b1,start,goal,0b0,BIT'(0b1),MAP_SIZE'b0);
+                0b1,start,goal,0b0,BIT'(0b1),(MAP_SIZE)'b0);
             start_reg:=start;
             goal_reg:=goal;
+
+            wall_end_kanwa:=(MAP_SIZE)'add_all_x.wall_end;
             }
-            kanwa_label:
+   kanwa_label:
 {
-                _display("exit %b,dig_exit%b",kanwa_exit,dig_exit);
+                _display("exit %b,dig_exit%b,all%b",kanwa_exit,dig_exit,wall_end_kanwa);
             kanwa_s(add_all_x.data_out17,add_all_x.data_out18,add_all_x.data_out19,add_all_x.data_out20,add_all_x.data_out21,add_all_x.data_out22,add_all_x.data_out23,add_all_x.data_out24,add_all_x.data_out25,add_all_x.data_out26,add_all_x.data_out27,add_all_x.data_out28,add_all_x.data_out29,add_all_x.data_out30,
             add_all_x.data_out33,add_all_x.data_out34,add_all_x.data_out35,add_all_x.data_out36,add_all_x.data_out37,add_all_x.data_out38,add_all_x.data_out39,add_all_x.data_out40,add_all_x.data_out41,add_all_x.data_out42,add_all_x.data_out43,add_all_x.data_out44,add_all_x.data_out45,add_all_x.data_out46,
             add_all_x.data_out49,add_all_x.data_out50,add_all_x.data_out51,add_all_x.data_out52,add_all_x.data_out53,add_all_x.data_out54,add_all_x.data_out55,add_all_x.data_out56,add_all_x.data_out57,add_all_x.data_out58,add_all_x.data_out59,add_all_x.data_out60,add_all_x.data_out61,add_all_x.data_out62,
@@ -134,11 +137,12 @@ add_all_x.all_sg_out17,add_all_x.all_sg_out18,add_all_x.all_sg_out19,add_all_x.a
             add_all_x.all_sg_out65,add_all_x.all_sg_out66,add_all_x.all_sg_out67,add_all_x.all_sg_out68,add_all_x.all_sg_out69,add_all_x.all_sg_out70,add_all_x.all_sg_out71,add_all_x.all_sg_out72,add_all_x.all_sg_out73,add_all_x.all_sg_out74,add_all_x.all_sg_out75,add_all_x.all_sg_out76,add_all_x.all_sg_out77,add_all_x.all_sg_out78,
             add_all_x.all_sg_out81,add_all_x.all_sg_out82,add_all_x.all_sg_out83,add_all_x.all_sg_out84,add_all_x.all_sg_out85,add_all_x.all_sg_out86,add_all_x.all_sg_out87,add_all_x.all_sg_out88,add_all_x.all_sg_out89,add_all_x.all_sg_out90,add_all_x.all_sg_out91,add_all_x.all_sg_out92,add_all_x.all_sg_out93,add_all_x.all_sg_out94,
             add_all_x.all_sg_out97,add_all_x.all_sg_out98,add_all_x.all_sg_out99,add_all_x.all_sg_out100,add_all_x.all_sg_out101,add_all_x.all_sg_out102,add_all_x.all_sg_out103,add_all_x.all_sg_out104,add_all_x.all_sg_out105,add_all_x.all_sg_out106,add_all_x.all_sg_out107,add_all_x.all_sg_out108,add_all_x.all_sg_out109,add_all_x.all_sg_out110,
-                0b0,start_reg,goal_reg,dig_exit,distance_count,add_all_x.wall_end); 
+                0b0,start_reg,goal_reg,dig_exit,distance_count,(MAP_SIZE)'wall_end_kanwa); 
 								
+            wall_end_kanwa:=(MAP_SIZE)'add_all_x.wall_end;
 				distance_count++;
 	}	
-            if((kanwa_exit<0b001||dig_exit==1'b0)&&start_reg!=goal_reg-1&&start_reg!=goal_reg+1&&start_reg!=goal_reg-WIDTH&&start_reg!=goal_reg+WIDTH){
+            if((kanwa_exit<0b011)&&start_reg!=goal_reg-1&&start_reg!=goal_reg+1&&start_reg!=goal_reg-WIDTH&&start_reg!=goal_reg+WIDTH){
                 kanwa_s(add_all_x.data_out17,add_all_x.data_out18,add_all_x.data_out19,add_all_x.data_out20,add_all_x.data_out21,add_all_x.data_out22,add_all_x.data_out23,add_all_x.data_out24,add_all_x.data_out25,add_all_x.data_out26,add_all_x.data_out27,add_all_x.data_out28,add_all_x.data_out29,add_all_x.data_out30,
                 add_all_x.data_out33,add_all_x.data_out34,add_all_x.data_out35,add_all_x.data_out36,add_all_x.data_out37,add_all_x.data_out38,add_all_x.data_out39,add_all_x.data_out40,add_all_x.data_out41,add_all_x.data_out42,add_all_x.data_out43,add_all_x.data_out44,add_all_x.data_out45,add_all_x.data_out46,
                 add_all_x.data_out49,add_all_x.data_out50,add_all_x.data_out51,add_all_x.data_out52,add_all_x.data_out53,add_all_x.data_out54,add_all_x.data_out55,add_all_x.data_out56,add_all_x.data_out57,add_all_x.data_out58,add_all_x.data_out59,add_all_x.data_out60,add_all_x.data_out61,add_all_x.data_out62,
@@ -163,8 +167,9 @@ add_all_x.all_sg_out17,add_all_x.all_sg_out18,add_all_x.all_sg_out19,add_all_x.a
             add_all_x.all_sg_out65,add_all_x.all_sg_out66,add_all_x.all_sg_out67,add_all_x.all_sg_out68,add_all_x.all_sg_out69,add_all_x.all_sg_out70,add_all_x.all_sg_out71,add_all_x.all_sg_out72,add_all_x.all_sg_out73,add_all_x.all_sg_out74,add_all_x.all_sg_out75,add_all_x.all_sg_out76,add_all_x.all_sg_out77,add_all_x.all_sg_out78,
             add_all_x.all_sg_out81,add_all_x.all_sg_out82,add_all_x.all_sg_out83,add_all_x.all_sg_out84,add_all_x.all_sg_out85,add_all_x.all_sg_out86,add_all_x.all_sg_out87,add_all_x.all_sg_out88,add_all_x.all_sg_out89,add_all_x.all_sg_out90,add_all_x.all_sg_out91,add_all_x.all_sg_out92,add_all_x.all_sg_out93,add_all_x.all_sg_out94,
             add_all_x.all_sg_out97,add_all_x.all_sg_out98,add_all_x.all_sg_out99,add_all_x.all_sg_out100,add_all_x.all_sg_out101,add_all_x.all_sg_out102,add_all_x.all_sg_out103,add_all_x.all_sg_out104,add_all_x.all_sg_out105,add_all_x.all_sg_out106,add_all_x.all_sg_out107,add_all_x.all_sg_out108,add_all_x.all_sg_out109,add_all_x.all_sg_out110,
-                  0b1 ,start_reg,goal_reg ,dig_exit,distance_count,add_all_x.wall_end);
-                _display("exit %b,dig_exit%b",kanwa_exit,dig_exit);
+                  0b1 ,start_reg,goal_reg ,dig_exit,distance_count,(MAP_SIZE)'wall_end_kanwa);
+            wall_end_kanwa:=(MAP_SIZE)'add_all_x.wall_end;
+                _display("exit %b,dig_exit%b\nall%b",kanwa_exit,dig_exit,wall_end_kanwa);
 				distance_count++;
                 goto kanwa_label;
             }
