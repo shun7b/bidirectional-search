@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Sat Apr 27 12:19:57 2024
+Analysis & Synthesis Status : Successful - Sun May 26 17:38:15 2024
 Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 Revision Name : test
 Top-level Entity Name : test
 Family : Arria II GX
 Logic utilization : N/A
-    Combinational ALUTs : 16,469
+    Combinational ALUTs : 30,826
     Memory ALUTs : 0
-    Dedicated logic registers : 5,497
-Total registers : 5497
+    Dedicated logic registers : 11,285
+Total registers : 11285
 Total pins : 3
 Total virtual pins : 0
 Total block memory bits : 0

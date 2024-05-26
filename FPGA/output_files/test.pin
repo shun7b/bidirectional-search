@@ -383,12 +383,12 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : V5        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : V6        :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V7        :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V8        :        :                   :         : 4A        :                
-HEX0                         : V9        : output : 2.5 V             :         : 4A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : V9        :        :                   :         : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V10       :        :                   :         : 4A        :                
 VCCIO3A                      : V11       : power  :                   : 2.5V    : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V12       :        :                   :         : 3A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : V13       :        :                   :         : 3A        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : V14       :        :                   :         : 3A        :                
+HEX0                         : V14       : output : 2.5 V             :         : 3A        : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : V15       :        :                   :         : 3A        :                
 nSTATUS                      : V16       :        :                   :         : 3C        :                
 GND                          : V17       : gnd    :                   :         :           :                

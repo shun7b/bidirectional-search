@@ -3,7 +3,7 @@
 `default_nettype none
 
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:45:50 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:43:34 2024
  Licensed to :EVALUATION USER*/
 
 //synthesis translate_off

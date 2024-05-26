@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:13:26 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:36:09 2024
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -1975,6 +1975,19 @@ always @(posedge m_clock)
 
 // synthesis translate_on
 // synopsys translate_on
+   assign  HEX0 = 
+// synthesis translate_off
+// synopsys translate_off
+(_meirotest_end_meiro)? 
+// synthesis translate_on
+// synopsys translate_on
+_meirotest_end_meiro
+// synthesis translate_off
+// synopsys translate_off
+:1'bx
+// synthesis translate_on
+// synopsys translate_on
+;
 initial begin
     map_test[0] = 8'b11111111;
     map_test[1] = 8'b11111111;
@@ -2192,5 +2205,5 @@ else if (_reg_3)
 end
 endmodule
 
-/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:13:26 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:36:09 2024
  Licensed to :EVALUATION USER*/

@@ -73,6 +73,7 @@ BIT'b0,BIT'b0,BIT'b0,BIT'b0
        }
     }
     func meirotest.end_meiro{
+				HEX0=0b1;	
         _display("bye");
         _finish();
     }

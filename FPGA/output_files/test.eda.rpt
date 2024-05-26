@@ -1,5 +1,5 @@
 EDA Netlist Writer report for test
-Sat Apr 27 12:30:43 2024
+Sun May 26 17:42:39 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -37,7 +37,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Sat Apr 27 12:30:43 2024 ;
+; EDA Netlist Writer Status ; Successful - Sun May 26 17:42:39 2024 ;
 ; Revision Name             ; test                                  ;
 ; Top-level Entity Name     ; test                                  ;
 ; Family                    ; Arria II GX                           ;
@@ -66,13 +66,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------------------------+-----------------------------+
 
 
-+-----------------------------------+
-; Simulation Generated Files        ;
-+-----------------------------------+
-; Generated Files                   ;
-+-----------------------------------+
-; E:/FPGA/simulation/questa/test.vo ;
-+-----------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                        ;
++---------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                   ;
++---------------------------------------------------------------------------------------------------+
+; C:/Users/socce/Downloads/2024sim/16_8/mazegit/bidirectional-search/FPGA/simulation/questa/test.vo ;
++---------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -81,14 +81,14 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Sat Apr 27 12:29:59 2024
+    Info: Processing started: Sun May 26 17:42:35 2024
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off test -c test
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file test.vo in folder "E:/FPGA/simulation/questa/" for EDA simulation tool
+Info (204019): Generated file test.vo in folder "C:/Users/socce/Downloads/2024sim/16_8/mazegit/bidirectional-search/FPGA/simulation/questa/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4814 megabytes
-    Info: Processing ended: Sat Apr 27 12:30:45 2024
-    Info: Elapsed time: 00:00:46
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 4867 megabytes
+    Info: Processing ended: Sun May 26 17:42:39 2024
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 
