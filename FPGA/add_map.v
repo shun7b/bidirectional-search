@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:50:05 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:13:27 2024
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -87,90 +87,70 @@ module add_map ( p_reset , m_clock , wall_end_in , all_sg_up , all_sg_down , all
   reg [7:0] org_reg;
   reg [7:0] org_near_reg;
   reg [1:0] sg_reg;
+  wire [127:0] indata;
+  wire [1:0] sg_w;
   reg [1:0] sg_near_reg;
-  reg [7:0] count;
   reg [127:0] all_sg;
-  reg [7:0] now_reg;
-  reg [7:0] near_point_reg;
   reg [127:0] all_sg_near;
   reg [127:0] now_all_sg_reg;
   wire [127:0] now_all_sg;
-  wire [2:0] div;
-  wire [1:0] sg_w;
-  wire [8:0] sum_value;
-  wire [6:0] add_sum_all;
-  wire [7:0] add_sum_all_2;
-  wire mods;
-  wire [17:0] add_bit;
   wire [7:0] add_mul_return;
   wire [7:0] data_out_w;
   wire pull_wall;
   wire [7:0] min;
   wire [7:0] max;
   wire _net_0;
-  wire _net_1;
+  wire [127:0] _net_1;
   wire _net_2;
-  wire [17:0] _mul_bit_x_mul_bit1;
-  wire [17:0] _mul_bit_x_mul_bit2;
-  wire [20:0] _mul_bit_x_mul_bit_result;
-  wire _mul_bit_x_mul_bit_exe;
-  wire _mul_bit_x_p_reset;
-  wire _mul_bit_x_m_clock;
-  wire [17:0] _mul_bit_x_1_mul_bit1;
-  wire [17:0] _mul_bit_x_1_mul_bit2;
-  wire [20:0] _mul_bit_x_1_mul_bit_result;
-  wire _mul_bit_x_1_mul_bit_exe;
-  wire _mul_bit_x_1_p_reset;
-  wire _mul_bit_x_1_m_clock;
+  wire _net_3;
   wire _net_4;
   wire _net_5;
   wire _net_6;
   wire _net_7;
-  wire _net_8;
+  wire [127:0] _net_8;
   wire _net_9;
   wire _net_10;
   wire _net_11;
-  wire _net_12;
+  wire [127:0] _net_12;
   wire _net_13;
   wire _net_14;
   wire _net_15;
-  wire [9:0] _net_16;
-  wire [7:0] _net_17;
-  wire _net_18;
-  wire [9:0] _net_19;
-  wire [7:0] _net_20;
+  wire _net_16;
+  wire _net_17;
+  wire [127:0] _net_18;
+  wire [127:0] _net_19;
+  wire _net_20;
   wire _net_21;
-mul_bit mul_bit_x (.m_clock(m_clock), .p_reset( p_reset), .mul_bit_exe(_mul_bit_x_mul_bit_exe), .mul_bit_result(_mul_bit_x_mul_bit_result), .mul_bit1(_mul_bit_x_mul_bit1), .mul_bit2(_mul_bit_x_mul_bit2));
-mul_bit mul_bit_x_1 (.m_clock(m_clock), .p_reset( p_reset), .mul_bit_exe(_mul_bit_x_1_mul_bit_exe), .mul_bit_result(_mul_bit_x_1_mul_bit_result), .mul_bit1(_mul_bit_x_1_mul_bit1), .mul_bit2(_mul_bit_x_1_mul_bit2));
+  wire [9:0] _net_22;
+  wire [7:0] _net_23;
+  wire _net_24;
+  wire [9:0] _net_25;
+  wire [7:0] _net_26;
 
 
 // synthesis translate_off
 // synopsys translate_off
 always @(posedge m_clock or negedge p_reset)
   begin
-if ((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(((add_exe&(~_net_4))&(~_net_6))&_net_8))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4)))|(((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))&_net_0)))
- begin $display("Warning: assign collision(add_map:now_all_sg) at %d",$time);
-if ((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)) $display("assert ((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)) line 103 at %d\n",$time);
-if ((((add_exe&(~_net_4))&(~_net_6))&_net_8)) $display("assert ((((add_exe&(~_net_4))&(~_net_6))&_net_8)) line 75 at %d\n",$time);
-if (((add_exe&(~_net_4))&_net_6)) $display("assert (((add_exe&(~_net_4))&_net_6)) line 66 at %d\n",$time);
-if ((add_exe&_net_4)) $display("assert ((add_exe&_net_4)) line 64 at %d\n",$time);
-if (_net_0) $display("assert (_net_0) line 32 at %d\n",$time);
+if (((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5))))
+ begin $display("Warning: assign collision(add_map:indata) at %d",$time);
+if (((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)) $display("assert (((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)) line 93 at %d\n",$time);
+if ((((add_exe&(~_net_3))&(~_net_5))&_net_9)) $display("assert ((((add_exe&(~_net_3))&(~_net_5))&_net_9)) line 64 at %d\n",$time);
+if (((add_exe&(~_net_3))&_net_5)) $display("assert (((add_exe&(~_net_3))&_net_5)) line 53 at %d\n",$time);
  end
  end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  now_all_sg = 
+   assign  indata = 
 // synthesis translate_off
 // synopsys translate_off
-((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(((add_exe&(~_net_4))&(~_net_6))&_net_8))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4)))|(((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))&_net_0)))? 128'bx :((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))|_net_0))? 
+(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5))))? 128'bx :(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5)))? 
 // synthesis translate_on
 // synopsys translate_on
-(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_13}):128'b0)|
-    (((((add_exe&(~_net_4))&(~_net_6))&_net_8))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_9}):128'b0)|
-    ((((add_exe&(~_net_4))&_net_6))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_7}):128'b0)|
-    (((add_exe&_net_4))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_5}):128'b0)|
-    ((_net_0)?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_1}):128'b0)
+((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_17}):128'b0)|
+    (((((add_exe&(~_net_3))&(~_net_5))&_net_9))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_10}):128'b0)|
+    ((((add_exe&(~_net_3))&_net_5))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_6}):128'b0)
 // synthesis translate_off
 // synopsys translate_off
 :128'bx
@@ -182,12 +162,12 @@ if (_net_0) $display("assert (_net_0) line 32 at %d\n",$time);
 // synopsys translate_off
 always @(posedge m_clock or negedge p_reset)
   begin
-if ((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))
+if (((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(((add_exe&(~_net_3))&(~_net_5))&_net_9))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))
  begin $display("Warning: assign collision(add_map:sg_w) at %d",$time);
-if (((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))) $display("assert (((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))) line 100 at %d\n",$time);
-if ((((add_exe&(~_net_4))&(~_net_6))&_net_8)) $display("assert ((((add_exe&(~_net_4))&(~_net_6))&_net_8)) line 81 at %d\n",$time);
-if (((add_exe&(~_net_4))&_net_6)) $display("assert (((add_exe&(~_net_4))&_net_6)) line 72 at %d\n",$time);
-if ((add_exe&_net_4)) $display("assert ((add_exe&_net_4)) line 62 at %d\n",$time);
+if ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)) $display("assert ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)) line 90 at %d\n",$time);
+if ((((add_exe&(~_net_3))&(~_net_5))&_net_9)) $display("assert ((((add_exe&(~_net_3))&(~_net_5))&_net_9)) line 71 at %d\n",$time);
+if (((add_exe&(~_net_3))&_net_5)) $display("assert (((add_exe&(~_net_3))&_net_5)) line 60 at %d\n",$time);
+if ((add_exe&_net_3)) $display("assert ((add_exe&_net_3)) line 49 at %d\n",$time);
  end
  end
 
@@ -196,42 +176,53 @@ if ((add_exe&_net_4)) $display("assert ((add_exe&_net_4)) line 62 at %d\n",$time
    assign  sg_w = 
 // synthesis translate_off
 // synopsys translate_off
-((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))? 2'bx :((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4)))? 
+(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(((add_exe&(~_net_3))&(~_net_5))&_net_9))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))? 2'bx :(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3)))? 
 // synthesis translate_on
 // synopsys translate_on
-((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0))))?(((sg_up|sg_down)|sg_left)|sg_right):2'b0)|
-    (((((add_exe&(~_net_4))&(~_net_6))&_net_8))?2'b01:2'b0)|
-    ((((add_exe&(~_net_4))&_net_6))?2'b10:2'b0)|
-    (((add_exe&_net_4))?2'b00:2'b0)
+(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15))?(((sg_up|sg_down)|sg_left)|sg_right):2'b0)|
+    (((((add_exe&(~_net_3))&(~_net_5))&_net_9))?2'b01:2'b0)|
+    ((((add_exe&(~_net_3))&_net_5))?2'b10:2'b0)|
+    (((add_exe&_net_3))?2'b00:2'b0)
 // synthesis translate_off
 // synopsys translate_off
 :2'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _net_0 = (sg_reg==2'b11);
-   assign  _net_1 = 1'b1;
-   assign  _net_2 = 1'b0;
-   assign  _mul_bit_x_mul_bit_exe = 1'b0;
-   assign  _mul_bit_x_p_reset = p_reset;
-   assign  _mul_bit_x_m_clock = m_clock;
-   assign  _mul_bit_x_1_mul_bit_exe = 1'b0;
-   assign  _mul_bit_x_1_p_reset = p_reset;
-   assign  _mul_bit_x_1_m_clock = m_clock;
 
 // synthesis translate_off
 // synopsys translate_off
-always @(posedge m_clock)
+always @(posedge m_clock or negedge p_reset)
   begin
-    if(add_exe)
-    begin
-    $display("\nnow=%ddata_out_index_reg=%d,data_out_reg=%d,org_reg=%d,near_reg=%d,orgnear_reg=%d,distance=%d,sg_w=%d,sg_near_reg=%dall_t_in=%d,wall_sg[now]=%d\n",now,data_out_index_reg,data_out_reg,org_reg,near_reg,org_near_reg,distance,sg_w,sg_near_reg,wall_t_in,(wall_end_in[now]));
-    end
-  end
+if ((((((add_exe&(~_net_3))&(~_net_5))&_net_9)&((add_exe&(~_net_3))&_net_5))|(((((add_exe&(~_net_3))&(~_net_5))&_net_9)|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))
+ begin $display("Warning: assign collision(add_map:now_all_sg) at %d",$time);
+if ((((add_exe&(~_net_3))&(~_net_5))&_net_9)) $display("assert ((((add_exe&(~_net_3))&(~_net_5))&_net_9)) line 65 at %d\n",$time);
+if (((add_exe&(~_net_3))&_net_5)) $display("assert (((add_exe&(~_net_3))&_net_5)) line 54 at %d\n",$time);
+if ((add_exe&_net_3)) $display("assert ((add_exe&_net_3)) line 51 at %d\n",$time);
+ end
+ end
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  _net_4 = 
+   assign  now_all_sg = 
+// synthesis translate_off
+// synopsys translate_off
+((((((add_exe&(~_net_3))&(~_net_5))&_net_9)&((add_exe&(~_net_3))&_net_5))|(((((add_exe&(~_net_3))&(~_net_5))&_net_9)|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))? 128'bx :((((((add_exe&(~_net_3))&(~_net_5))&_net_9)|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3)))? 
+// synthesis translate_on
+// synopsys translate_on
+(((((add_exe&(~_net_3))&(~_net_5))&_net_9))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_11}):128'b0)|
+    ((((add_exe&(~_net_3))&_net_5))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_7}):128'b0)|
+    (((add_exe&_net_3))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_4}):128'b0)
+// synthesis translate_off
+// synopsys translate_off
+:128'bx
+// synthesis translate_on
+// synopsys translate_on
+;
+   assign  _net_0 = ((sg_near_reg==2'b11)|(sg_reg==2'b11));
+   assign  _net_1 = all_sg;
+   assign  _net_2 = 1'b0;
+   assign  _net_3 = 
 // synthesis translate_off
 // synopsys translate_off
 (add_exe)? 
@@ -244,82 +235,47 @@ always @(posedge m_clock)
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _net_5 = 1'b1;
-   assign  _net_6 = 
+   assign  _net_4 = 1'b1;
+   assign  _net_5 = 
 // synthesis translate_off
 // synopsys translate_off
-((add_exe&(~_net_4)))? 
+((add_exe&(~_net_3)))? 
 // synthesis translate_on
 // synopsys translate_on
-(((add_exe&(~_net_4)))?(now==goal):1'b0)
+(((add_exe&(~_net_3)))?(now==goal):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
+   assign  _net_6 = 1'b1;
    assign  _net_7 = 1'b1;
-   assign  _net_8 = 
+   assign  _net_8 = (indata<<now);
+   assign  _net_9 = 
 // synthesis translate_off
 // synopsys translate_off
-(((add_exe&(~_net_4))&(~_net_6)))? 
+(((add_exe&(~_net_3))&(~_net_5)))? 
 // synthesis translate_on
 // synopsys translate_on
-((((add_exe&(~_net_4))&(~_net_6)))?(now==start):1'b0)
-// synthesis translate_off
-// synopsys translate_off
-:1'bx
-// synthesis translate_on
-// synopsys translate_on
-;
-   assign  _net_9 = 1'b1;
-   assign  _net_10 = 
-// synthesis translate_off
-// synopsys translate_off
-(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))? 
-// synthesis translate_on
-// synopsys translate_on
-((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))?((wall_end_in[now])==1'b0):1'b0)
+((((add_exe&(~_net_3))&(~_net_5)))?(now==start):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _net_11 = 
-// synthesis translate_off
-// synopsys translate_off
-(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))? 
-// synthesis translate_on
-// synopsys translate_on
-((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))?((wall_end_in[now])==1'b1):1'b0)
-// synthesis translate_off
-// synopsys translate_off
-:1'bx
-// synthesis translate_on
-// synopsys translate_on
-;
-   assign  _net_12 = 
-// synthesis translate_off
-// synopsys translate_off
-(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0))))? 
-// synthesis translate_on
-// synopsys translate_on
-((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0))))?(sg_w != sg_near_reg):1'b0)
-// synthesis translate_off
-// synopsys translate_off
-:1'bx
-// synthesis translate_on
-// synopsys translate_on
-;
-   assign  _net_13 = 1'b1;
+   assign  _net_10 = 1'b1;
+   assign  _net_11 = 1'b1;
+   assign  _net_12 = (indata<<now);
+   assign  _net_13 = 1'b0;
    assign  _net_14 = 
 // synthesis translate_off
 // synopsys translate_off
-((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12))? 
+(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))? 
 // synthesis translate_on
 // synopsys translate_on
-(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12))?(sg_w==2'b10):1'b0)
+((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))?((~(wall_end_in[now]))&(wall_end_in != ({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_13}))):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
@@ -329,46 +285,75 @@ always @(posedge m_clock)
    assign  _net_15 = 
 // synthesis translate_off
 // synopsys translate_off
-(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14)))? 
+(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0))))? 
 // synthesis translate_on
 // synopsys translate_on
-((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14)))?(sg_w==2'b01):1'b0)
+((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0))))?(wall_t_in==1'b0):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _net_16 = 10'b0010000000;
-   assign  _net_17 = distance;
-   assign  _net_18 = 
+   assign  _net_16 = 
 // synthesis translate_off
 // synopsys translate_off
-((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15)))? 
+((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15))? 
 // synthesis translate_on
 // synopsys translate_on
-(((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15)))?(sg_w==2'b11):1'b0)
+(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15))?((sg_w != sg_near_reg)&(2'b00==sg_near_reg)):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _net_19 = 10'b0010000000;
-   assign  _net_20 = distance;
+   assign  _net_17 = 1'b1;
+   assign  _net_18 = (indata<<now);
+   assign  _net_19 = ((((all_sg_up|all_sg_down)|all_sg_left)|all_sg_right)|_net_18);
+   assign  _net_20 = 
+// synthesis translate_off
+// synopsys translate_off
+(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16))? 
+// synthesis translate_on
+// synopsys translate_on
+((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16))?(sg_w==2'b10):1'b0)
+// synthesis translate_off
+// synopsys translate_off
+:1'bx
+// synthesis translate_on
+// synopsys translate_on
+;
    assign  _net_21 = 
 // synthesis translate_off
 // synopsys translate_off
-((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12)))? 
+((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20)))? 
 // synthesis translate_on
 // synopsys translate_on
-(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12)))?(sg_w==2'b00):1'b0)
+(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20)))?(sg_w==2'b01):1'b0)
 // synthesis translate_off
 // synopsys translate_off
 :1'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
+   assign  _net_22 = 10'b0010000000;
+   assign  _net_23 = distance;
+   assign  _net_24 = 
+// synthesis translate_off
+// synopsys translate_off
+(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21)))? 
+// synthesis translate_on
+// synopsys translate_on
+((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21)))?(sg_w==2'b11):1'b0)
+// synthesis translate_off
+// synopsys translate_off
+:1'bx
+// synthesis translate_on
+// synopsys translate_on
+;
+   assign  _net_25 = 10'b0010000000;
+   assign  _net_26 = distance;
 
 // synthesis translate_off
 // synopsys translate_off
@@ -376,8 +361,8 @@ always @(posedge m_clock or negedge p_reset)
   begin
 if (((~_net_0)&_net_0))
  begin $display("Warning: assign collision(add_map:end_wall) at %d",$time);
-if ((~_net_0)) $display("assert ((~_net_0)) line 35 at %d\n",$time);
-if (_net_0) $display("assert (_net_0) line 33 at %d\n",$time);
+if ((~_net_0)) $display("assert ((~_net_0)) line 32 at %d\n",$time);
+if (_net_0) $display("assert (_net_0) line 30 at %d\n",$time);
  end
  end
 
@@ -390,7 +375,7 @@ if (_net_0) $display("assert (_net_0) line 33 at %d\n",$time);
 // synthesis translate_on
 // synopsys translate_on
 (((~_net_0))?({127'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,_net_2}):128'b0)|
-    ((_net_0)?((((all_sg_up|all_sg_down)|all_sg_left)|all_sg_right)|(now_all_sg<<now)):128'b0)
+    ((_net_0)?_net_1:128'b0)
 // synthesis translate_off
 // synopsys translate_off
 :128'bx
@@ -414,23 +399,21 @@ if (~p_reset)
 else 
 // synthesis translate_off
 // synopsys translate_off
-if (((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))&((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))&(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11)))|(((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))&(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10)))|((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|(((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))   data_out_index_reg <= 8'bx; 
+if ((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))&(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))&(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))   data_out_index_reg <= 8'bx; 
   else 
 // synthesis translate_on
 // synopsys translate_on
-if (((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21)))
+if (((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16)))
       data_out_index_reg <= moto;
-else if (((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))
-      data_out_index_reg <= 8'b11111111;
-else if ((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))
+else if ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))
       data_out_index_reg <= moto;
-else if ((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))
+else if ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))
       data_out_index_reg <= 8'b11111111;
-else if ((((add_exe&(~_net_4))&(~_net_6))&_net_8))
+else if ((((add_exe&(~_net_3))&(~_net_5))&_net_9))
       data_out_index_reg <= 8'b01111111;
-else if (((add_exe&(~_net_4))&_net_6))
+else if (((add_exe&(~_net_3))&_net_5))
       data_out_index_reg <= 8'b00000000;
-else if ((add_exe&_net_4))
+else if ((add_exe&_net_3))
       data_out_index_reg <= 8'b11111111;
 end
 
@@ -438,9 +421,9 @@ end
 // synopsys translate_off
 always @(posedge m_clock)
   begin
-if ((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b1) ||
- (((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b0) ) begin
- if (((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))&((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))&(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11)))|(((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))&(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10)))|((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|(((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))
+if (((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b1) ||
+ ((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b0) ) begin
+ if ((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))&(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))&(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))
  begin $display("Warning: assign collision(add_map:data_out_index_reg) at %d",$time);
 
   end
@@ -459,29 +442,27 @@ if (~p_reset)
 else 
 // synthesis translate_off
 // synopsys translate_off
-if ((((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))&((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))&((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)))|(((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))&(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15)))|((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))&((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14)))|(((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))&(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11)))|((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))&(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10)))|(((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|(((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))   data_out_reg <= 8'bx; 
+if (((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))&(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))&((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))&(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20)))|((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))&(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14))))|(((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))&(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14)))|((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|(((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))   data_out_reg <= 8'bx; 
   else 
 // synthesis translate_on
 // synopsys translate_on
-if (((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21)))
+if (((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16)))
       data_out_reg <= moto;
-else if (((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))
-      data_out_reg <= 8'b11111111;
-else if (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))
-      data_out_reg <= ((_net_19[7:0])-_net_20);
-else if ((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))
-      data_out_reg <= ((_net_16[7:0])-_net_17);
-else if (((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))
+else if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))
+      data_out_reg <= ((_net_25[7:0])-_net_26);
+else if (((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))
+      data_out_reg <= ((_net_22[7:0])-_net_23);
+else if ((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))
       data_out_reg <= distance;
-else if ((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))
+else if ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))
       data_out_reg <= moto;
-else if ((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))
+else if ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))
       data_out_reg <= 8'b11111111;
-else if ((((add_exe&(~_net_4))&(~_net_6))&_net_8))
+else if ((((add_exe&(~_net_3))&(~_net_5))&_net_9))
       data_out_reg <= 8'b01111111;
-else if (((add_exe&(~_net_4))&_net_6))
+else if (((add_exe&(~_net_3))&_net_5))
       data_out_reg <= 8'b00000000;
-else if ((add_exe&_net_4))
+else if ((add_exe&_net_3))
       data_out_reg <= 8'b11111111;
 end
 
@@ -489,9 +470,9 @@ end
 // synopsys translate_off
 always @(posedge m_clock)
   begin
-if (((((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b1) ||
- ((((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b0) ) begin
- if ((((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))&((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))&((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)))|(((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))&(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15)))|((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))&((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14)))|(((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))&(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11)))|((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))&(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10)))|(((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|(((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&(~_net_21))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(~_net_12))&_net_21))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_11))|(((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))&_net_10))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))
+if ((((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b1) ||
+ (((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b0) ) begin
+ if (((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))&(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))&((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))&(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20)))|((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))&(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14))))|(((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))&(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14)))|((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|(((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&(~_net_16))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&(~_net_14)))|(((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))&_net_14))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))
  begin $display("Warning: assign collision(add_map:data_out_reg) at %d",$time);
 
   end
@@ -517,23 +498,23 @@ if (~p_reset)
 else 
 // synthesis translate_off
 // synopsys translate_off
-if (((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)&(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))&((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14)))|(((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))&((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))))|((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|(((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))   wall_reg <= 1'bx; 
+if ((((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)&((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))&(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20)))|((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))&((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))))|(((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))   wall_reg <= 1'bx; 
   else 
 // synthesis translate_on
 // synopsys translate_on
-if (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18))
+if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24))
       wall_reg <= 1'b1;
-else if ((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))
+else if (((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))
       wall_reg <= wall_t_in;
-else if (((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))
+else if ((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))
       wall_reg <= wall_t_in;
-else if (((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))
+else if (((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))
       wall_reg <= wall_t_in;
-else if ((((add_exe&(~_net_4))&(~_net_6))&_net_8))
+else if ((((add_exe&(~_net_3))&(~_net_5))&_net_9))
       wall_reg <= wall_t_in;
-else if (((add_exe&(~_net_4))&_net_6))
+else if (((add_exe&(~_net_3))&_net_5))
       wall_reg <= wall_t_in;
-else if ((add_exe&_net_4))
+else if ((add_exe&_net_3))
       wall_reg <= wall_t_in;
 end
 
@@ -541,9 +522,9 @@ end
 // synopsys translate_off
 always @(posedge m_clock)
   begin
-if ((((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b1) ||
- (((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b0) ) begin
- if (((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)&(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))&((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14)))|(((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))&((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0))))|((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|(((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&(~_net_15))&_net_18)|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&(~_net_14))&_net_15))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12)&_net_14))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))
+if (((((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b1) ||
+ ((((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b0) ) begin
+ if ((((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)&((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))&(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20)))|((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))&((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0))))|(((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&(~_net_21))&_net_24)|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(~_net_20))&_net_21))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&_net_20))|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))
  begin $display("Warning: assign collision(add_map:wall_reg) at %d",$time);
 
   end
@@ -562,19 +543,19 @@ if (~p_reset)
 else 
 // synthesis translate_off
 // synopsys translate_off
-if (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))   org_reg <= 8'bx; 
+if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))   org_reg <= 8'bx; 
   else 
 // synthesis translate_on
 // synopsys translate_on
-if (((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0))))
+if ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15))
       org_reg <= moto_org;
-else if (((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))
+else if (((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))
       org_reg <= moto_org;
-else if ((((add_exe&(~_net_4))&(~_net_6))&_net_8))
+else if ((((add_exe&(~_net_3))&(~_net_5))&_net_9))
       org_reg <= moto_org;
-else if (((add_exe&(~_net_4))&_net_6))
+else if (((add_exe&(~_net_3))&_net_5))
       org_reg <= moto_org;
-else if ((add_exe&_net_4))
+else if ((add_exe&_net_3))
       org_reg <= moto_org;
 end
 
@@ -582,9 +563,9 @@ end
 // synopsys translate_off
 always @(posedge m_clock)
   begin
-if ((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b1) ||
- (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b0) ) begin
- if (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))
+if (((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b1) ||
+ ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b0) ) begin
+ if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))
  begin $display("Warning: assign collision(add_map:org_reg) at %d",$time);
 
   end
@@ -603,19 +584,19 @@ if (~p_reset)
 else 
 // synthesis translate_off
 // synopsys translate_off
-if (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))   org_near_reg <= 8'bx; 
+if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))   org_near_reg <= 8'bx; 
   else 
 // synthesis translate_on
 // synopsys translate_on
-if (((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0))))
+if ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15))
       org_near_reg <= moto_org_near;
-else if (((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))
+else if (((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))
       org_near_reg <= moto_org_near;
-else if ((((add_exe&(~_net_4))&(~_net_6))&_net_8))
+else if ((((add_exe&(~_net_3))&(~_net_5))&_net_9))
       org_near_reg <= moto_org_near;
-else if (((add_exe&(~_net_4))&_net_6))
+else if (((add_exe&(~_net_3))&_net_5))
       org_near_reg <= moto_org_near;
-else if ((add_exe&_net_4))
+else if ((add_exe&_net_3))
       org_near_reg <= moto_org_near;
 end
 
@@ -623,9 +604,9 @@ end
 // synopsys translate_off
 always @(posedge m_clock)
   begin
-if ((((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b1) ||
- (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b0) ) begin
- if (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8)))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))
+if (((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b1) ||
+ ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b0) ) begin
+ if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))
  begin $display("Warning: assign collision(add_map:org_near_reg) at %d",$time);
 
   end
@@ -644,17 +625,19 @@ if (~p_reset)
 else 
 // synthesis translate_off
 // synopsys translate_off
-if ((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))   sg_reg <= 2'bx; 
+if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))   sg_reg <= 2'bx; 
   else 
 // synthesis translate_on
 // synopsys translate_on
-if (((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0))))
+if ((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15))
       sg_reg <= sg_w;
-else if ((((add_exe&(~_net_4))&(~_net_6))&_net_8))
+else if (((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))
+      sg_reg <= sg_near_reg;
+else if ((((add_exe&(~_net_3))&(~_net_5))&_net_9))
       sg_reg <= 2'b01;
-else if (((add_exe&(~_net_4))&_net_6))
+else if (((add_exe&(~_net_3))&_net_5))
       sg_reg <= 2'b10;
-else if ((add_exe&_net_4))
+else if ((add_exe&_net_3))
       sg_reg <= 2'b00;
 end
 
@@ -662,9 +645,9 @@ end
 // synopsys translate_off
 always @(posedge m_clock)
   begin
-if (((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b1) ||
- ((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))|(add_exe&_net_4))==1'b0) ) begin
- if ((((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))&((add_exe&(~_net_4))&_net_6)))|(((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))|(((add_exe&(~_net_4))&(~_net_6))&_net_8))|((add_exe&(~_net_4))&_net_6))&(add_exe&_net_4))))
+if (((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b1) ||
+ ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))|(add_exe&_net_3))==1'b0) ) begin
+ if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))&(((add_exe&(~_net_3))&(~_net_5))&_net_9)))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5)))|(((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)|((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(wall_t_in != 1'b0)))|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))&(add_exe&_net_3))))
  begin $display("Warning: assign collision(add_map:sg_reg) at %d",$time);
 
   end
@@ -681,38 +664,51 @@ always @(posedge m_clock or negedge p_reset)
 if (~p_reset)
      sg_near_reg <= 2'b00;
 else if (add_exe)
-      sg_near_reg <= sg_reg;
-end
-always @(posedge m_clock or negedge p_reset)
-  begin
-if (~p_reset)
-     count <= 8'b00000000;
+      sg_near_reg <= sg_up;
 end
 always @(posedge m_clock or negedge p_reset)
   begin
 if (~p_reset)
      all_sg <= 128'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
-else if ((((((add_exe&(~_net_4))&(~_net_6))&(~_net_8))&(~(wall_t_in != 1'b0)))&_net_12))
-      all_sg <= ((((all_sg_up|all_sg_down)|all_sg_left)|all_sg_right)|(now_all_sg<<now));
+else 
+// synthesis translate_off
+// synopsys translate_off
+if (((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5))))   all_sg <= 128'bx; 
+  else 
+// synthesis translate_on
+// synopsys translate_on
+if (((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16))
+      all_sg <= _net_19;
+else if ((((add_exe&(~_net_3))&(~_net_5))&_net_9))
+      all_sg <= _net_12;
+else if (((add_exe&(~_net_3))&_net_5))
+      all_sg <= _net_8;
 end
-always @(posedge m_clock or negedge p_reset)
+
+// synthesis translate_off
+// synopsys translate_off
+always @(posedge m_clock)
   begin
-if (~p_reset)
-     now_reg <= 8'b00000000;
-else if (add_exe)
-      now_reg <= near_point_reg;
-end
-always @(posedge m_clock or negedge p_reset)
-  begin
-if (~p_reset)
-     near_point_reg <= 8'b00000000;
-else if (add_exe)
-      near_point_reg <= now;
-end
+if ((((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))==1'b1) ||
+ (((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((add_exe&(~_net_3))&_net_5))==1'b0) ) begin
+ if (((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)&(((add_exe&(~_net_3))&(~_net_5))&_net_9))|((((((((add_exe&(~_net_3))&(~_net_5))&(~_net_9))&(~(wall_t_in != 1'b0)))&_net_15)&_net_16)|(((add_exe&(~_net_3))&(~_net_5))&_net_9))&((add_exe&(~_net_3))&_net_5))))
+ begin $display("Warning: assign collision(add_map:all_sg) at %d",$time);
+
+  end
+ end
+ else 
+ $display("Warning: register set hazard(add_map:all_sg) at %d",$time);
+
+  end
+
+// synthesis translate_on
+// synopsys translate_on
 always @(posedge m_clock or negedge p_reset)
   begin
 if (~p_reset)
      all_sg_near <= 128'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+else if (add_exe)
+      all_sg_near <= all_sg_up;
 end
 always @(posedge m_clock or negedge p_reset)
   begin
@@ -721,5 +717,5 @@ if (~p_reset)
 end
 endmodule
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:50:05 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:13:27 2024
  Licensed to :EVALUATION USER*/

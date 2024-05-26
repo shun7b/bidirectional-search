@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:50:05 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:13:26 2024
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -240,7 +240,7 @@ always @(posedge fpga_MAP_SIZE_start)
  begin
 $display("Warning: control hazard(test:fpga_MAP_SIZE_start) at %d",$time);
  end
-#1 if (((_net_1)===1'bx) || (1'b1)===1'bx) $display("hazard (_net_1 || 1'b1) line 137 at %d\n",$time);
+#1 if (((_net_1)===1'bx) || (1'b1)===1'bx) $display("hazard (_net_1 || 1'b1) line 51 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -1926,7 +1926,7 @@ always @(posedge _meirotest_in_do)
  begin
 $display("Warning: control hazard(test:_meirotest_in_do) at %d",$time);
  end
-#1 if ((((fpga_MAP_SIZE_start|_reg_3))===1'bx) || (1'b1)===1'bx) $display("hazard ((fpga_MAP_SIZE_start|_reg_3) || 1'b1) line 157 at %d\n",$time);
+#1 if ((((fpga_MAP_SIZE_start|_reg_3))===1'bx) || (1'b1)===1'bx) $display("hazard ((fpga_MAP_SIZE_start|_reg_3) || 1'b1) line 71 at %d\n",$time);
  end
 
 // synthesis translate_on
@@ -1975,19 +1975,6 @@ always @(posedge m_clock)
 
 // synthesis translate_on
 // synopsys translate_on
-   assign  HEX0 = 
-// synthesis translate_off
-// synopsys translate_off
-(_meirotest_end_meiro)? 
-// synthesis translate_on
-// synopsys translate_on
-_meirotest_end_meiro
-// synthesis translate_off
-// synopsys translate_off
-:1'bx
-// synthesis translate_on
-// synopsys translate_on
-;
 initial begin
     map_test[0] = 8'b11111111;
     map_test[1] = 8'b11111111;
@@ -2205,5 +2192,5 @@ else if (_reg_3)
 end
 endmodule
 
-/*Produced by NSL Core(version=20221225), IP ARCH, Inc. Sat Apr 27 08:50:05 2024
+/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Sun May 26 17:13:26 2024
  Licensed to :EVALUATION USER*/
